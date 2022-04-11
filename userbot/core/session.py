@@ -1,5 +1,5 @@
 import sys
-
+import pytgcalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 from pySmartDL import SmartDL
