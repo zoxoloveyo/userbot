@@ -1,10 +1,16 @@
 import sys
-import pytgcalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
-from userbot import *
+from pySmartDL import SmartDL
 from ..Config import Config
 from .client import JmthonUserBotClient
+from userbot.helpers.utils.extdl import install_pip
+
+try:
+    import pytgcalls
+except ModuleNotFoundError:
+    install_pip("py-tgcalls")
+    import pytgcalls
 
 __version__ = "2.10.6"
 
