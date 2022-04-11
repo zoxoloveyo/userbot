@@ -9,7 +9,8 @@
 import signal
 import sys
 import time
-
+from pySmartDL import SmartDL
+from pytgcalls import PyTgCalls
 import heroku3
 
 from .Config import Config
