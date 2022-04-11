@@ -7,10 +7,10 @@ from .client import JmthonUserBotClient
 from userbot.helpers.utils.extdl import install_pip
 
 try:
-    import pytgcalls
+    from pytgcalls import PyTgCalls
 except ModuleNotFoundError:
     install_pip("py-tgcalls")
-    import pytgcalls
+    from pytgcalls import PyTgCalls
 
 __version__ = "2.10.6"
 
