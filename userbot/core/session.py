@@ -2,8 +2,7 @@ import sys
 import pytgcalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
-from pySmartDL import SmartDL
-from pytgcalls import PyTgCalls
+from userbot import *
 from ..Config import Config
 from .client import JmthonUserBotClient
 
