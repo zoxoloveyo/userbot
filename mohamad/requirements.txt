@@ -25,6 +25,7 @@ googletrans==4.0.0-rc1
 gsearch
 git+https://github.com/buddhhu/img2html.git
 git+https://github.com/yt-dlp/yt-dlp
+git+https://github.com/MarshalX/tgcalls
 gtts
 hachoir
 heroku3
@@ -44,7 +45,6 @@ prettytable
 programmingquotes
 psutil
 psycopg2
-py-tgcalls
 pyfiglet
 PyGithub
 pygments
