@@ -1,5 +1,4 @@
 import random
-import re
 import time
 from datetime import datetime
 from platform import python_version
@@ -10,23 +9,25 @@ from telethon.errors.rpcerrorlist import (
     WebpageCurlFailedError,
     WebpageMediaEmptyError,
 )
-from telethon.events import CallbackQuery
 
 from userbot import StartTime, jmthon, jmthonversion
 
-from ..Config import Config
 from ..core.managers import edit_or_reply
-from ..helpers.functions import jmthonalive, check_data_base_heal_th, get_readable_time
+from ..helpers.functions import check_data_base_heal_th, get_readable_time
 from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
 from . import mention
+
 
 @jmthon.ar_cmd(pattern="فحص$")
 async def amireallyalive(event):
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    jmthonevent = await edit_or_reply(event, "**⌔∮ عزيزي المستخدم اذا هذه الرسالة بقت ولم تظهر لك كليشه الفحص يرجى اضاف الكليشه بشكل صحيح مره اخرى**")
+    jmthonevent = await edit_or_reply(
+        event,
+        "**⌔∮ عزيزي المستخدم اذا هذه الرسالة بقت ولم تظهر لك كليشه الفحص يرجى اضاف الكليشه بشكل صحيح مره اخرى**",
+    )
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
@@ -72,6 +73,3 @@ temp = """{ALIVE_TEXT}
 **{EMOJI} الوقت:** `{uptime}` 
 **{EMOJI} أصدار البـايثون :** `{pyver}`
 **{EMOJI} المسـتخدم:** {mention}"""
-
-
-

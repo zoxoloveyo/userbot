@@ -105,7 +105,7 @@ async def mybot():
     The_razan = bot.uid
     rz_ment = f"[{JMTHON_USER}](tg://user?id={The_razan})"
     f"ـ {rz_ment}"
-    description = f"⪼ هذا هو بوت خاص بـ {rz_ment} يمكنك التواصل معه هنا"
+    f"⪼ هذا هو بوت خاص بـ {rz_ment} يمكنك التواصل معه هنا"
     starkbot = await jmthon.tgbot.get_me()
     perf = "[ جمثون ]"
     bot_name = starkbot.first_name
