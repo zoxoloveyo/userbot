@@ -38,7 +38,7 @@ except Exception as e:
     print(f"[STRING SESSION] - {str(e)}")
     sys.exit()
 
-if STRING_2:
+if Config.STRING_2:
     session2 = StringSession(str(STRING_2))
     JMTHON2 = JmthonUserBotClient(
         session=session2,
