@@ -9,23 +9,12 @@
 import signal
 import sys
 import time
-import heroku3
-import logging
-import os
-import re
-import sys
-import time
-from asyncio import get_event_loop
-from base64 import b64decode
-from distutils.util import strtobool as sb
-from logging import DEBUG, INFO, basicConfig, getLogger
 
+import heroku3
 
 from pySmartDL import SmartDL
 from pytgcalls import PyTgCalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
-from telethon.sessions import StringSession
-from telethon.sync import TelegramClient, custom, events
 from .Config import Config
 from .core.logger import logging
 from .helpers.utils.utils import runasync
