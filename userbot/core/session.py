@@ -4,13 +4,6 @@ from telethon.sessions import StringSession
 from pySmartDL import SmartDL
 from ..Config import Config
 from .client import JmthonUserBotClient
-from userbot.helpers.utils.extdl import install_pip
-
-try:
-    from pytgcalls import PyTgCalls
-except ModuleNotFoundError:
-    install_pip("py-tgcalls")
-    from pytgcalls import PyTgCalls
 
 __version__ = "2.10.6"
 
@@ -32,7 +25,6 @@ try:
         auto_reconnect=True,
         connection_retries=None,
     )
-    call_py = PyTgCalls(jmthon)
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
