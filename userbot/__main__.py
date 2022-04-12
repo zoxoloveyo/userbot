@@ -31,6 +31,7 @@ print("جميع الحقوق مرخصة بموجب شروط " + userbot.__licens
 
 cmdhr = Config.COMMAND_HAND_LER
 
+
 try:
     LOGS.info("يتم اعداد البوت")
     jmthon.loop.run_until_complete(setup_bot())
@@ -39,12 +40,16 @@ except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
 
+try:
+    LOGS.info("يتم تفعيل وضع الانلاين")
+    jmthon.loop.run_until_complete(mybot())
+except Exception as meo:
+    LOGS.error(f"- {meo}")
 
 async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    await mybot()
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("تم الان بنجاح اكتمال تنصيب بوت جمثون !!!")
     print(
