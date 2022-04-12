@@ -11,8 +11,17 @@ DELETE_TIMEOUT = 5
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 
 
-@jmthon.ar_cmd(pattern="تنصيب$")
+@jmthon.ar_cmd(
+    pattern="تنصيب$",
+    command=("تنصيب", plugin_category),
+    info={
+        "header": "To install an external plugin.",
+        "description": "Reply to any external plugin(supported by cat) to install it in your bot.",
+        "usage": "{tr}install",
+    },
+)
 async def install(event):
+    "To install an external plugin."
     if event.reply_to_msg_id:
         try:
             downloaded_file_name = await event.client.download_media(
@@ -37,8 +46,19 @@ async def install(event):
             await edit_delete(event, f"**خـطأ:**\n`{e}`", 10)
             os.remove(downloaded_file_name)
 
-@jmthon.ar_cmd(pattern="الغاء تنصيب ([\s\S]*)")
+@jmthon.ar_cmd(
+    pattern="الغاء تنصيب ([\s\S]*)",
+    command=("الغاء تنصيب", plugin_category),
+    info={
+        "header": "To uninstall a plugin temporarily.",
+        "description": "To stop functioning of that plugin and remove that plugin from bot.",
+        "note": "To unload a plugin permanently from bot set NO_LOAD var in heroku with that plugin name, give space between plugin names if more than 1.",
+        "usage": "{tr}uninstall <plugin name>",
+        "examples": "{tr}uninstall markdown",
+    },
+)
 async def unload(event):
+    "To uninstall a plugin."
     shortname = event.pattern_match.group(1)
     path = Path(f"userbot/plugins/{shortname}.py")
     if not os.path.exists(path):
