@@ -10,11 +10,27 @@ import signal
 import sys
 import time
 import heroku3
+import logging
+import os
+import re
+import sys
+import time
+from asyncio import get_event_loop
+from base64 import b64decode
+from distutils.util import strtobool as sb
+from logging import DEBUG, INFO, basicConfig, getLogger
 
+
+from pySmartDL import SmartDL
+from pytgcalls import PyTgCalls
+from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
+from telethon.sessions import StringSession
+from telethon.sync import TelegramClient, custom, events
 from .Config import Config
 from .core.logger import logging
-from .core.session import jmthon
 from .helpers.utils.utils import runasync
+from telethon.sessions import StringSession
+from telethon.sync import TelegramClient, custom, events
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 __version__ = "3.0.6"
@@ -76,6 +92,87 @@ try:
         HEROKU_APP = None
 except Exception:
     HEROKU_APP = None
+
+if STRING_SESSION:
+    session = StringSession(str(STRING_SESSION))
+else:
+    session = "jmthonbot"
+try:
+    jmthon = TelegramClient(
+        session=session,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py = PyTgCalls(jmthon)
+except Exception as e:
+    print(f"STRING_SESSION - {e}")
+    sys.exit()
+
+if STRING_2:
+    session2 = StringSession(str(STRING_2))
+    JMTHON2 = TelegramClient(
+        session=session2,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py2 = PyTgCalls(JMTHON2)
+else:
+    call_py2 = None
+    JMTHON2 = None
+
+
+if STRING_3:
+    session3 = StringSession(str(STRING_3))
+    JMTHON3 = TelegramClient(
+        session=session3,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py3 = PyTgCalls(JMTHON3)
+else:
+    call_py3 = None
+    JMTHON3 = None
+
+
+if STRING_4:
+    session4 = StringSession(str(STRING_4))
+    JMTHON4 = TelegramClient(
+        session=session4,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py4 = PyTgCalls(JMTHON4)
+else:
+    call_py4 = None
+    JMTHON4 = None
+
+
+if STRING_5:
+    session5 = StringSession(str(STRING_5))
+    JMTHON5 = TelegramClient(
+        session=session5,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py5 = PyTgCalls(JMTHON5)
+else:
+    call_py5 = None
+    JMTHON5 = None
 
 
 # Global Configiables
