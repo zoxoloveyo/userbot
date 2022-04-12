@@ -49,7 +49,7 @@ if STRING_2:
         connection_retries=None,
     )
 else:
-    MAN2 = None
+    JMTHON2 = None
     
 jmthon.tgbot = tgbot = CatUserBotClient(
     session="JmthonTgbot",
