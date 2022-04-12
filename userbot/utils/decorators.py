@@ -68,7 +68,7 @@ def admin_cmd(pattern=None, command=None, **args):
     return NewMessage(**args)
 
 
-def sudo_cmd(pattern=None, command=None, **args): 
+def sudo_cmd(pattern=None, command=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]

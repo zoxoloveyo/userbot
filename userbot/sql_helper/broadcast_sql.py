@@ -15,7 +15,10 @@ class JmthonBroadcast(BASE):
         self.group_id = str(group_id)
 
     def __repr__(self):
-        return "<Jmthon Broadcast channels '%s' for %s>" % (self.group_id, self.keywoard)
+        return "<Jmthon Broadcast channels '%s' for %s>" % (
+            self.group_id,
+            self.keywoard,
+        )
 
     def __eq__(self, other):
         return bool(

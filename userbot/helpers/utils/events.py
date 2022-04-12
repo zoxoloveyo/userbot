@@ -61,14 +61,18 @@ async def get_user_from_event(
             previous_message = await event.get_reply_message()
             if previous_message.from_id is None:
                 if not noedits:
-                    await edit_delete(jmthonevent, "- عذرا هذا المشرف مُفعل عليه وضع الاخفاء")
+                    await edit_delete(
+                        jmthonevent, "- عذرا هذا المشرف مُفعل عليه وضع الاخفاء"
+                    )
                 return None, None
             user_obj = await event.client.get_entity(previous_message.sender_id)
             return user_obj, extra
         if not args:
             if not noedits:
                 await edit_delete(
-                    jmthonevent, "❃ يرجى وضع ايدي او معرف الشخص او الرد عليه بالامر 𓆰، ", 5
+                    jmthonevent,
+                    "❃ يرجى وضع ايدي او معرف الشخص او الرد عليه بالامر 𓆰، ",
+                    5,
                 )
             return None, None
     except Exception as e:

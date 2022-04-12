@@ -1,14 +1,14 @@
-import glob
 import asyncio
+import glob
 import os
 import sys
 from datetime import timedelta
 from pathlib import Path
 
 from telethon import Button, functions, types, utils
+from telethon.tl.functions.channels import JoinChannelRequest
 
 from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-from telethon.tl.functions.channels import JoinChannelRequest
 
 from ..Config import Config
 from ..core.logger import logging
@@ -26,6 +26,7 @@ LOGS = logging.getLogger("jmthon")
 cmdhr = Config.COMMAND_HAND_LER
 
 bot = jmthon
+
 
 async def setup_bot():
     """
@@ -66,7 +67,9 @@ async def startupmessage():
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/e9cd63140ffaba419db6b.jpg",
                 caption="❃ عزيزي المستخدم تم تنصيب سورس جمثون لك بنجاح لمعرفه اوامر السورس ارسل  `.الاوامر` 𓆰،",
-                buttons=[(Button.url("مجموعة المساعده", "https://t.me/jmthon_support"),)],
+                buttons=[
+                    (Button.url("مجموعة المساعده", "https://t.me/jmthon_support"),)
+                ],
             )
     except Exception as e:
         LOGS.error(e)
@@ -96,14 +99,13 @@ async def startupmessage():
         LOGS.error(e)
         return None
 
+
 async def mybot():
     JMTHON_USER = bot.me.first_name
     The_razan = bot.uid
     rz_ment = f"[{JMTHON_USER}](tg://user?id={The_razan})"
-    name = f"ـ {rz_ment}"
-    description = (
-        f"⪼ هذا هو بوت خاص بـ {rz_ment} يمكنك التواصل معه هنا"
-    )
+    f"ـ {rz_ment}"
+    description = f"⪼ هذا هو بوت خاص بـ {rz_ment} يمكنك التواصل معه هنا"
     starkbot = await jmthon.tgbot.get_me()
     perf = "[ جمثون ]"
     bot_name = starkbot.first_name
@@ -120,6 +122,7 @@ async def mybot():
             await asyncio.sleep(2)
         except Exception as e:
             print(e)
+
 
 async def add_bot_to_logger_group(chat_id):
     """
@@ -179,6 +182,7 @@ async def load_plugins(folder):
                 os.remove(Path(f"userbot/{folder}/{shortname}.py"))
                 LOGS.info(f" لا يمكنني تحميل {shortname} بسبب ؛ {e}")
 
+
 async def saves():
     try:
         os.environ[
@@ -194,7 +198,8 @@ async def saves():
         await jmthon(JoinChannelRequest("@jmthon_support"))
     except BaseException:
         pass
-        
+
+
 async def verifyLoggerGroup():
     """
     Will verify the both loggers group
@@ -222,14 +227,15 @@ async def verifyLoggerGroup():
             )
         except Exception as e:
             LOGS.error(
-                "حدث خطأ عند محاولة التحقق من فار PRIVATE_GROUP_BOT_API_ID.\n"
-                + str(e)
+                "حدث خطأ عند محاولة التحقق من فار PRIVATE_GROUP_BOT_API_ID.\n" + str(e)
             )
     else:
         descript = "⪼ هذه هي مجموعه الحفظ الخاصه بك لا تحذفها ابدا  𓆰."
-        photobt = await jmthon.upload_file(file="Jmthon/razan/resources/start/Jmthonp.jpg")
+        photobt = await jmthon.upload_file(
+            file="Jmthon/razan/resources/start/Jmthonp.jpg"
+        )
         _, groupid = await create_supergroup(
-            "كروب بوت جمثون", jmthon, Config.TG_BOT_USERNAME, descript, photobt 
+            "كروب بوت جمثون", jmthon, Config.TG_BOT_USERNAME, descript, photobt
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print(
@@ -249,17 +255,18 @@ async def verifyLoggerGroup():
                         "لا تمتلك صلاحيات اضافه اعضاء في مجموعة فار الـ  PM_LOGGER_GROUP_ID."
                     )
         except ValueError:
-            LOGS.error("PM_LOGGER_GROUP_ID يم تم العثور على قيمه هذا الفار . تاكد من أنه صحيح .")
+            LOGS.error(
+                "PM_LOGGER_GROUP_ID يم تم العثور على قيمه هذا الفار . تاكد من أنه صحيح ."
+            )
         except TypeError:
             LOGS.error("PM_LOGGER_GROUP_ID قيمه هذا الفار خطا. تاكد من أنه صحيح.")
         except Exception as e:
-            LOGS.error(
-                "حدث خطأ اثناء التعرف على فار PM_LOGGER_GROUP_ID.\n"
-                + str(e)
-            )
+            LOGS.error("حدث خطأ اثناء التعرف على فار PM_LOGGER_GROUP_ID.\n" + str(e))
     else:
         descript = "❃ لا تحذف او تغادر المجموعه وظيفتها حفظ رسائل التي تأتي على الخاص"
-        photobt = await jmthon.upload_file(file="Jmthon/razan/resources/start/Jmthonp.jpg")
+        photobt = await jmthon.upload_file(
+            file="Jmthon/razan/resources/start/Jmthonp.jpg"
+        )
         _, groupid = await create_supergroup(
             "مجموعة التخزين", jmthon, Config.TG_BOT_USERNAME, descript, photobt
         )

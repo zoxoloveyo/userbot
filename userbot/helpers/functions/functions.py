@@ -92,7 +92,8 @@ async def animator(media, mainevent, textevent):
     os.remove(Badjmthon)
     sticker = "animate.webm"
     return sticker
-    
+
+
 def reddit_thumb_link(preview, thumb=None):
     for i in preview:
         if "width=216" in i:

@@ -122,7 +122,9 @@ class JmthonUserBotClient(TelegramClient):
                 except MessageIdInvalidError:
                     LOGS.error("الرسالة تم حذفها او لم يتم العثور عليها")
                 except BotInlineDisabledError:
-                    await edit_delete(check, "⌔∮ يجب عليك تفعيل وضع الانلاين اولا ارسل", 10)
+                    await edit_delete(
+                        check, "⌔∮ يجب عليك تفعيل وضع الانلاين اولا ارسل", 10
+                    )
                 except ChatSendStickersForbiddenError:
                     await edit_delete(
                         check, "**⎙ :: - ههذه الدردشة لا تسمح بارسال الملصقات هنا**", 10
@@ -132,7 +134,9 @@ class JmthonUserBotClient(TelegramClient):
                         check, "⪼ استخدم الميزه بعد وقت قليل لا يمكن الاستجابه الان", 10
                     )
                 except ChatSendMediaForbiddenError:
-                    await edit_delete(check, "**⪼ هذه المجموعه تمنع ارسال الميديا هنا 𓆰،**", 10)
+                    await edit_delete(
+                        check, "**⪼ هذه المجموعه تمنع ارسال الميديا هنا 𓆰،**", 10
+                    )
                 except AlreadyInConversationError:
                     await edit_delete(
                         check,
@@ -141,7 +145,9 @@ class JmthonUserBotClient(TelegramClient):
                     )
                 except ChatSendInlineForbiddenError:
                     await edit_delete(
-                        check, "**↻ لا يمكنك ارسال اي شي يستخدم الانلاين في هذه الدردشه**", 10
+                        check,
+                        "**↻ لا يمكنك ارسال اي شي يستخدم الانلاين في هذه الدردشه**",
+                        10,
                     )
                 except FloodWaitError as e:
                     LOGS.error(
@@ -183,9 +189,7 @@ class JmthonUserBotClient(TelegramClient):
                         link = "[هنا](https://t.me/jmthon_support)"
                         text += "يمكنك التبليغ عن هذه المشكله"
                         text += f"- فقط قم بتوجيه الرساله هنا {link}.\n"
-                        text += (
-                            "لم يتم حفظ اي شي عدا المشكله وتاريخ حدوثها\n\n"
-                        )
+                        text += "لم يتم حفظ اي شي عدا المشكله وتاريخ حدوثها\n\n"
                         text += f"**تقرير الخطأ : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
@@ -300,9 +304,7 @@ class JmthonUserBotClient(TelegramClient):
                         link = "[هنا](https://t.me/jmthon_support)"
                         text += "يمكنك التبليغ عن هذه المشكله"
                         text += f"- فقط قم بتوجيه الرساله هنا {link}.\n"
-                        text += (
-                            "لم يتم حفظ اي شي عدا المشكله وتاريخ حدوثها\n\n"
-                        )
+                        text += "لم يتم حفظ اي شي عدا المشكله وتاريخ حدوثها\n\n"
                         text += f"**تقرير الخطأ : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False

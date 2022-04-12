@@ -3,7 +3,7 @@ from pathlib import Path
 
 from ..Config import Config
 from ..utils import load_module, remove_plugin
-from . import CMD_HELP, CMD_LIST, SUDO_LIST, jmthon, edit_delete, edit_or_reply, reply_id
+from . import CMD_HELP, CMD_LIST, SUDO_LIST, edit_delete, edit_or_reply, jmthon
 
 plugin_category = "tools"
 
@@ -45,6 +45,7 @@ async def install(event):
         except Exception as e:
             await edit_delete(event, f"**خـطأ:**\n`{e}`", 10)
             os.remove(downloaded_file_name)
+
 
 @jmthon.ar_cmd(
     pattern="الغاء تنصيب ([\s\S]*)",

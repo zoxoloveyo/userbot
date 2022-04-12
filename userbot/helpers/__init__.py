@@ -13,7 +13,7 @@ while flag:
         from .progress import *
         from .qhelper import process
         from .tools import *
-        from .utils import _jmthontools, _jmthonutils, _format
+        from .utils import _format, _jmthontools, _jmthonutils
 
         break
     except ModuleNotFoundError as e:

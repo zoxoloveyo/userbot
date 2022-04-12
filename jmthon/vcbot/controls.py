@@ -14,8 +14,9 @@ from pytgcalls.types.input_stream.quality import (
     MediumQualityVideo,
 )
 
-from userbot.core.session import call_py
 from userbot import LOGS
+from userbot.core.session import call_py
+
 from .queues import QUEUE, clear_queue, get_queue, pop_an_item
 
 

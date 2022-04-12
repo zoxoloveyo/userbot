@@ -50,7 +50,7 @@ if Config.STRING_2:
     )
 else:
     JMTHON2 = None
-    
+
 jmthon.tgbot = tgbot = JmthonUserBotClient(
     session="JmthonTgbot",
     api_id=Config.APP_ID,

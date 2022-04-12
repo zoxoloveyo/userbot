@@ -62,7 +62,7 @@ class Config(object):
     DELWELCOME_CMD = os.environ.get("DELWELCOME_CMD", None)
     WELCOMES_CMD = os.environ.get("WELCOMES_CMD", None)
     WELCOME_CMD = os.environ.get("WELCOME_CMD", None)
-    
+
     PING_PIC = os.environ.get("PING_PIC")
     ADJM_PIC = os.environ.get("ADJM_PIC")
     TI_FN = os.environ.get("TI_FN", None)
