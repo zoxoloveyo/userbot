@@ -2,7 +2,7 @@ import base64
 
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import MessageEntityMentionName
-from pylists import *
+
 from ...Config import Config
 from ...core.logger import logging
 from ...core.managers import edit_delete
