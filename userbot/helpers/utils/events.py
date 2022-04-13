@@ -2,7 +2,7 @@ import base64
 
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import MessageEntityMentionName
-
+from pylists import *
 from ...Config import Config
 from ...core.logger import logging
 from ...core.managers import edit_delete
@@ -83,7 +83,6 @@ async def get_user_from_event(
 
 
 async def ccontact(event, msg):
-    if str(event.chat_id) in GR__PS:
         await edit_delete(
             event,
             msg,
