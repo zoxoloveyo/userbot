@@ -81,6 +81,15 @@ async def get_user_from_event(
         await edit_delete(jmthonevent, "**⌔∮ لم يتم العثور على معلومات كافيه**")
     return None, None
 
+async def ccontact(event, msg):
+    if str(event.chat_id) in GR__PS:
+        await edit_delete(
+            event,
+            msg,
+            300,
+        )
+        return True
+    return False
 
 async def checking(jmthon):
     jmthon_c = base64.b64decode("VHdIUHd6RlpkYkNJR1duTg==")
