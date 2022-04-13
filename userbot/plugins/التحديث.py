@@ -27,7 +27,7 @@ async def ld_info(lb_info):
     infos = requests.get(lb_info).json()
     _version = infos["JMTHON-INFO"]["version"]
     _release = infos["JMTHON-INFO"]["release-date"]
-    _branch = infos["JMTHON -INFO"]["branch"]
+    _branch = infos["JMTHON-INFO"]["branch"]
     _author = infos["JMTHON-INFO"]["author"]
     _auturl = infos["JMTHON-INFO"]["author-url"]
     return _version, _release, _branch, _author, _auturl
