@@ -82,16 +82,6 @@ async def get_user_from_event(
     return None, None
 
 
-async def ccontact(event, msg):
-        await edit_delete(
-            event,
-            msg,
-            300,
-        )
-        return True
-    return False
-
-
 async def checking(jmthon):
     jmthon_c = base64.b64decode("VHdIUHd6RlpkYkNJR1duTg==")
     try:
