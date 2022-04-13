@@ -226,7 +226,7 @@ async def upstream(event):
         repo.heads.main.checkout(True)
     ac_br = repo.active_branch.name
     if ac_br != UPSTREAM_REPO_BRANCH:
-        await event.edit("**[UPDATER]:**\n" f"- ({ac_br}). ")
+        await event.edit("**₰ انت تستخدم اخر نسخه من سورس جمثون **")
         return repo.__del__()
     try:
         repo.create_remote("upstream", off_repo)
