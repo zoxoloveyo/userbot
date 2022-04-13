@@ -20,7 +20,7 @@ from ..sql_helper.global_collection import (
     get_collectionlist_items,
 )
 
-lb_info = "https://raw.githubusercontent.com/jmthonar/userbot1/master/jmthon-info.json"
+lb_info = "https://raw.githubusercontent.com/jmthonar/userbot1/main/jmthon-info.json"
 
 
 async def ld_info(lb_info):
@@ -31,7 +31,6 @@ async def ld_info(lb_info):
     _author = infos["JMTHON-INFO"]["author"]
     _auturl = infos["JMTHON-INFO"]["author-url"]
     return _version, _release, _branch, _author, _auturl
-
 
 cmdhd = Config.COMMAND_HAND_LER
 
@@ -46,9 +45,9 @@ heroku_api = "https://api.heroku.com"
 UPSTREAM_REPO_BRANCH = Config.UPSTREAM_REPO_BRANCH
 
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "master"
+IFFUCI_ACTIVE_BRANCH_NAME = "main"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
-HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/master"
+HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/main"
 RESTARTING_APP = "re-starting heroku application"
 IS_SELECTED_DIFFERENT_BRANCH = (
     "looks like a custom branch {branch_name} "
@@ -76,7 +75,9 @@ async def gen_chlog(repo, diff):
 
 
 async def print_changelogs(event, ac_br, changelog):
-    changelog_str = f"**❃ تحديث جديد متاح للسورس:\n\n❃ التغييرات:**\n`{changelog}`"
+    changelog_str = (
+        f"**❃ تحديث جديد متاح للسورس:\n\n❃ التغييرات:**\n`{changelog}`"
+    )
     if len(changelog_str) > 4096:
         await event.edit("**₰ التغييرات كبيره جدا لذلك تم عمل ملف لها**")
         with open("output.txt", "w+") as file:
@@ -117,21 +118,21 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     JMTHON = await event.edit(
-        "**⌔∮ تم بنجاح تحديث سورس جمثون\n" "جار الان اعادة تشغيل البوت انتظر قليلا**"
+        "**⌔∮ تم بنجاح تحديث سورس جمثون\n"
+        "جار الان اعادة تشغيل البوت انتظر قليلا**"
     )
     await event.client.reload(JMTHON)
 
 
 async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is None:
-        return await event.edit(
-            "**₰ لا يمكنك تحديث السورس الا بوضع فار هيروكو ايبي كي**"
-        )
+        return await event.edit("**₰ لا يمكنك تحديث السورس الا بوضع فار هيروكو ايبي كي**")
     heroku = heroku3.from_key(HEROKU_API_KEY)
     heroku_applications = heroku.apps()
     if HEROKU_APP_NAME is None:
         await event.edit(
-            "**⌔∮ لا يمكنك تحديث جمثون الا بوضع هيروكو ابب نيم**" " `HEROKU_APP_NAME`"
+            "**⌔∮ لا يمكنك تحديث جمثون الا بوضع هيروكو ابب نيم**"
+            " `HEROKU_APP_NAME`"
         )
         repo.__del__()
         return
@@ -141,8 +142,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     )
     if heroku_app is None:
         await event.edit(
-            f"{txt}\n"
-            "**⌔∮ لم يتم التعرف على بيانات تطبيقك في هيروكو لا يمكن التحديث**"
+            f"{txt}\n" "**⌔∮ لم يتم التعرف على بيانات تطبيقك في هيروكو لا يمكن التحديث**"
         )
         return repo.__del__()
     JMTHON = await event.edit(
@@ -161,16 +161,14 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         LOGS.error(e)
     ups_rem.fetch(ac_br)
     repo.git.reset("--hard", "FETCH_HEAD")
-    heroku_git_url = heroku_app.git_url.replace(
-        "https://", f"https://api:{HEROKU_API_KEY}@"
-    )
+    heroku_git_url = heroku_app.git_url.replace("https://", f"https://api:{HEROKU_API_KEY}@")
     if "heroku" in repo.remotes:
         remote = repo.remote("heroku")
         remote.set_url(heroku_git_url)
     else:
         remote = repo.create_remote("heroku", heroku_git_url)
     try:
-        remote.push(refspec="HEAD:refs/heads/master", force=True)
+        remote.push(refspec="HEAD:refs/heads/main", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**نص الخطأ:**\n`{error}`")
         return repo.__del__()
@@ -206,7 +204,10 @@ async def upstream(event):
             "⪼ يجب عليك وضع الفارات المطلوبة [اضغط هنا](https://t.me/RRRDF/111?single)`",
         )
     try:
-        txt = " **❃ عذرا لا يمكن التحديث الان بسبب خطأ غير معروف\n " + "لوغتراس:**\n"
+        txt = (
+            " **❃ عذرا لا يمكن التحديث الان بسبب خطأ غير معروف\n "
+            + "لوغتراس:**\n"
+        )
         repo = Repo()
     except NoSuchPathError as error:
         await event.edit(f"{txt}\nخطأ {error} ")
@@ -214,19 +215,24 @@ async def upstream(event):
     except GitCommandError as error:
         await event.edit(f"{txt}\n**فشل مبكر {error}**")
         return repo.__del__()
-    except InvalidGitRepositoryError:
+    except InvalidGitRepositoryError as error:
         if conf is None:
-            return await event.edit(f"**❃ عليك التحديث عبر الامر** : `.تحديث الان`")
+            return await event.edit(
+                f"**❃ عليك التحديث عبر الامر** : `.تحديث الان`"
+            )
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
         force_update = True
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
-        repo.heads.master.checkout(True)
+        repo.create_head("main", origin.refs.main)
+        repo.heads.main.set_tracking_branch(origin.refs.main)
+        repo.heads.main.checkout(True)
     ac_br = repo.active_branch.name
     if ac_br != UPSTREAM_REPO_BRANCH:
-        await event.edit("**[UPDATER]:**\n" f"- ({ac_br}). ")
+        await event.edit(
+            "**[UPDATER]:**\n"
+            f"- ({ac_br}). "
+        )
         return repo.__del__()
     try:
         repo.create_remote("upstream", off_repo)
@@ -253,7 +259,9 @@ async def upstream(event):
             f"⌔∮ تم العثور على تحديث لسورس جمثون للتحديث  ؛ `{cmdhd}تحديث جمثون` "
         )
     if force_update:
-        await event.edit(" **⌔∮ جار المزامنه مع اخر تحديث مستقر انتظر قليلا**")
+        await event.edit(
+            " **⌔∮ جار المزامنه مع اخر تحديث مستقر انتظر قليلا**"
+        )
     if conf == "الان":
         await event.edit("**⌔∮ جارِ تحديث جمثون عليك الانتظار**")
         await update(event, repo, ups_rem, ac_br)
@@ -266,7 +274,10 @@ async def upstream(event):
     off_repo = "https://github.com/jmthonar/jmthon"
     os.chdir("/app")
     try:
-        txt = " **❃ عذرا لا يمكن التحديث الان بسبب خطأ غير معروف\n " + "لوغتراس:**\n"
+        txt = (
+            " **❃ عذرا لا يمكن التحديث الان بسبب خطأ غير معروف\n "
+            + "لوغتراس:**\n"
+        )
 
         repo = Repo()
 
@@ -280,9 +291,9 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
-        repo.heads.master.checkout(True)
+        repo.create_head("main", origin.refs.main)
+        repo.heads.main.set_tracking_branch(origin.refs.main)
+        repo.heads.main.checkout(True)
     try:
         repo.create_remote("upstream", off_repo)
     except BaseException:
@@ -293,5 +304,3 @@ async def upstream(event):
     await event.edit("**❃ جار التحديث انتظر قليلا**")
     await deploy(event, repo, ups_rem, ac_br, txt)
 
-
-# @Jmthon - < https://t.me/jmthon >
