@@ -130,7 +130,7 @@ async def on_snip_list(event):
     OUT_STR = "**⌔∮ لم يتم اضافه اي رد في هذه الدردشه**"
     filters = get_filters(event.chat_id)
     for filt in filters:
-        if OUT_STR == "**⌔∮ لم يتم اضافه اي رد في هذه الدردشه**"
+        if OUT_STR == "**⌔∮ لم يتم اضافه اي رد في هذه الدردشه**": 
             OUT_STR = "₰ الردود الحاليه في الدردشه:\n"
         OUT_STR += "⪼ `{}`\n".format(filt.keyword)
     await edit_or_reply(
@@ -141,7 +141,7 @@ async def on_snip_list(event):
     )
 
 
-@jmthon.ar_cmd(pattern="ايقاف (.*)")
+@jmthon.ar_cmd(pattern="ايقاف ([\s\S]*)")
 async def remove_a_filter(event):
     filt = event.pattern_match.group(1)
     if not remove_filter(event.chat_id, filt):
