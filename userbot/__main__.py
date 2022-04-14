@@ -43,6 +43,7 @@ except Exception as e:
 try:
     LOGS.info("يتم تفعيل وضع الانلاين")
     jmthon.loop.run_until_complete(mybot())
+    LOGS.info("تم تفعيل وضع الانلاين بنجاح ✓")
 except Exception as meo:
     LOGS.error(f"- {meo}")
 
