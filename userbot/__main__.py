@@ -47,6 +47,13 @@ try:
 except Exception as meo:
     LOGS.error(f"- {meo}")
 
+try:
+    LOGS.info("يتم تفعيل وضع حمايه الحساب من الاختراق")
+    jmthon.loop.create_task(saves())
+    LOGS.info("تم تفعيل وضع حمايه الحساب من الاختراق")
+except Exception as bb:
+    LOGS.error(f"- {bb}")
+
 
 async def startup_process():
     await verifyLoggerGroup()
@@ -68,7 +75,6 @@ async def startup_process():
 
 
 jmthon.loop.run_until_complete(startup_process())
-jmthon.loop.create_task(saves())
 
 if len(sys.argv) not in (1, 3, 4):
     jmthon.disconnect()
