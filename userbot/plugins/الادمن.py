@@ -1,11 +1,11 @@
-from asyncio import sleep
 import asyncio
+
 from telethon.errors import (
     BadRequestError,
     ImageProcessFailedError,
     PhotoCropSizeSmallError,
 )
-from telethon.errors.rpcerrorlist import UserAdminInvalidError, UserIdInvalidError
+from telethon.errors.rpcerrorlist import UserIdInvalidError
 from telethon.tl.functions.channels import (
     EditAdminRequest,
     EditBannedRequest,
@@ -21,15 +21,15 @@ from telethon.tl.types import (
 from telethon.utils import get_display_name
 
 from userbot import jmthon
+
 from ..Config import Config
 from ..core.logger import logging
-from ..core.managers import edit_delete as eod, edit_or_reply as eor
+from ..core.managers import edit_delete as eod
+from ..core.managers import edit_or_reply as eor
 from ..helpers import media_type
 from ..helpers.utils import _format, get_user_from_event
-from ..sql_helper.globals import gvarstatus
 from ..sql_helper.mute_sql import is_muted, mute, unmute
-from . import BOTLOG, BOTLOG_CHATID, ban_rz, demote_rz, mute_rz, promote_rz 
-
+from . import BOTLOG, BOTLOG_CHATID, ban_rz, demote_rz, mute_rz, promote_rz
 
 # =================== STRINGS ============
 PP_TOO_SMOL = "**- الصورة صغيرة جدا**"
@@ -94,12 +94,12 @@ from telethon.tl.types import ChannelParticipantsKicked as banned
 
 
 @jmthon.ar_cmd(
-    pattern="تنزيل الكل$",    
+    pattern="تنزيل الكل$",
     groups_only=True,
-    require_admin=True,)
+    require_admin=True,
+)
 async def demotal(e):
     sr = await e.client.get_participants(e.chat.id, filter=admin)
-    et = 0
     newrights = ChatAdminRights(
         add_admins=None,
         invite_users=None,
@@ -129,7 +129,9 @@ async def getbaed(event):
     except Exception as e:
         return await eor(event, f"خطأ - {str(e)}")
     if len(users) > 0:
-        msg = f"✓ **قائمة المستخدمين المحظورين هنا**\n العدد الكلي : __{len(users)}__\n\n"
+        msg = (
+            f"✓ **قائمة المستخدمين المحظورين هنا**\n العدد الكلي : __{len(users)}__\n\n"
+        )
         for user in users:
             if not user.deleted:
                 msg += f"🛡 __[{user.first_name}]({user.id})__\n"
@@ -142,7 +144,6 @@ async def getbaed(event):
 
 @jmthon.ar_cmd(
     pattern="الصورة (وضع|حذف)$",
-
     groups_only=True,
     require_admin=True,
 )
@@ -239,7 +240,7 @@ async def promote(event):
 
 
 @jmthon.ar_cmd(
-    pattern="تنزيل مشرف(?:\s|$)([\s\S]*)",  
+    pattern="تنزيل مشرف(?:\s|$)([\s\S]*)",
     groups_only=True,
     require_admin=True,
 )
@@ -366,6 +367,7 @@ async def watcher(event):
         except Exception as e:
             LOGS.info(str(e))
 
+
 @jmthon.ar_cmd(pattern="كتم(?:\s|$)([\s\S]*)")
 async def startgmute(event):
     if event.is_private:
@@ -383,10 +385,13 @@ async def startgmute(event):
     try:
         user = (await event.client(GetFullUserRequest(userid))).user
     except Exception:
-        return await edit_or_reply(event, "**⌔∮ لا يمكنني الحصول على معلومات من هذا المستخدم**")
+        return await edit_or_reply(
+            event, "**⌔∮ لا يمكنني الحصول على معلومات من هذا المستخدم**"
+        )
     if is_muted(userid, "gmute"):
         return await eor(
-            event,"**⪼ المستخدم**: {_format.mentionuser(user.first_name ,user.id)}\n**تم كتمه بنجاح**",
+            event,
+            "**⪼ المستخدم**: {_format.mentionuser(user.first_name ,user.id)}\n**تم كتمه بنجاح**",
         )
     try:
         mute(userid, "gmute")
@@ -398,15 +403,15 @@ async def startgmute(event):
                 event.chat_id,
                 mt_rz,
                 caption=f"**⪼ المستخدم:  {_format.mentionuser(user.first_name ,user.id)}\nتم كتمه بنجاح\nالسبب: {reason}**",
-        )
+            )
             await event.delete()
         else:
             await jmthon.send_file(
                 event.chat_id,
                 mt_rz,
                 caption=f"**⪼ المستخدم: {_format.mentionuser(user.first_name ,user.id)}\nتم كتمه بنجاح**",
-        )
-            await event.delete()        
+            )
+            await event.delete()
     if BOTLOG:
         reply = await event.get_reply_message()
         if reason:
@@ -443,10 +448,13 @@ async def endgmute(event):
     try:
         user = (await event.client(GetFullUserRequest(userid))).user
     except Exception:
-        return await edit_or_reply(event, "**⌔∮ لا يمكنني الحصول على معلومات من هذا المستخدم**")
+        return await edit_or_reply(
+            event, "**⌔∮ لا يمكنني الحصول على معلومات من هذا المستخدم**"
+        )
     if not is_muted(userid, "gmute"):
         return await edit_or_reply(
-            event, f"**⪼ المستخدم:  {_format.mentionuser(user.first_name ,user.id)}\nغير مكتوم اصلا** "
+            event,
+            f"**⪼ المستخدم:  {_format.mentionuser(user.first_name ,user.id)}\nغير مكتوم اصلا** ",
         )
     try:
         unmute(userid, "gmute")
@@ -483,7 +491,7 @@ async def endgmute(event):
 async def watcher(event):
     if is_muted(event.sender_id, "gmute"):
         await event.delete()
-        
+
 
 @jmthon.ar_cmd(
     pattern="طرد(?:\s|$)([\s\S]*)",
@@ -504,7 +512,9 @@ async def endmute(event):
             f"**⌔∮ تم بنجاح طرد [{user.first_name}](tg://user?id={user.id})\nالسبب: {reason}**"
         )
     else:
-        await rozevent.edit(f"**- تم بنجاح طرد [{user.first_name}](tg://user?id={user.id}) !**")
+        await rozevent.edit(
+            f"**- تم بنجاح طرد [{user.first_name}](tg://user?id={user.id}) !**"
+        )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
