@@ -1,6 +1,9 @@
 import re
+
 from telethon.utils import get_display_name
+
 from userbot import jmthon
+
 from ..core.managers import edit_or_reply
 from ..sql_helper.filter_sql import (
     add_filter,
@@ -9,6 +12,7 @@ from ..sql_helper.filter_sql import (
     remove_filter,
 )
 from . import BOTLOG, BOTLOG_CHATID
+
 
 @jmthon.ar_cmd(incoming=True)
 async def filter_incoming_handler(event):
@@ -130,7 +134,7 @@ async def on_snip_list(event):
     OUT_STR = "**⌔∮ لم يتم اضافه اي رد في هذه الدردشه**"
     filters = get_filters(event.chat_id)
     for filt in filters:
-        if OUT_STR == "**⌔∮ لم يتم اضافه اي رد في هذه الدردشه**": 
+        if OUT_STR == "**⌔∮ لم يتم اضافه اي رد في هذه الدردشه**":
             OUT_STR = "₰ الردود الحاليه في الدردشه:\n"
         OUT_STR += "⪼ `{}`\n".format(filt.keyword)
     await edit_or_reply(
@@ -158,4 +162,3 @@ async def on_all_snip_delete(event):
         await edit_or_reply(event, "⪼ تم حذف جميع الردود المضافه هنا بنجاح")
     else:
         await edit_or_reply(event, "**⌔∮ لم يتم اضافه اي رد في هذه الدردشه**")
-
