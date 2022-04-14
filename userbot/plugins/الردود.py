@@ -141,7 +141,7 @@ async def on_snip_list(event):
     )
 
 
-@jmthon.ar_cmd(pattern="ايقاف ([\s\S]*)")
+@jmthon.ar_cmd(pattern="ايقاف (.*)")
 async def remove_a_filter(event):
     filt = event.pattern_match.group(1)
     if not remove_filter(event.chat_id, filt):
