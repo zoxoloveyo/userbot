@@ -5,9 +5,7 @@ import os
 import pathlib
 from time import time
 
-from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import types
-from telethon.tl.functions.contacts import UnblockRequest as unblock
 from telethon.utils import get_attributes
 from urlextract import URLExtract
 from wget import download
@@ -27,10 +25,8 @@ from ..core import pool
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import progress, reply_id
-from ..helpers.functions import delete_conv
 from ..helpers.functions.utube import _mp3Dl, get_yt_video_id, get_ytthumb, ytsearch
 from ..helpers.utils import _format
-from . import BOTLOG, BOTLOG_CHATID, catub
 
 BASE_YT_URL = "https://www.youtube.com/watch?v="
 extractor = URLExtract()
@@ -155,7 +151,9 @@ async def download_audio(event):
         msg = rmsg.text
     urls = extractor.find_urls(msg)
     if not urls:
-        return await edit_or_reply(event, "**⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا**")
+        return await edit_or_reply(
+            event, "**⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا**"
+        )
     catevent = await edit_or_reply(event, "⌯︙يتم البحث عن المطلوب انتظر")
     reply_to_id = await reply_id(event)
     for url in urls:
@@ -177,7 +175,9 @@ async def download_audio(event):
             else:
                 _fpath = _path
         if not _fpath:
-            return await edit_delete(catevent, "**- لقد حدث خطأ اثناء التعرف على المعلومات**")
+            return await edit_delete(
+                catevent, "**- لقد حدث خطأ اثناء التعرف على المعلومات**"
+            )
         await catevent.edit(
             f"**يتم التحضير الى رفع المقطع الصوتي:**\
             \n**{vid_data['title']}***"
@@ -236,7 +236,9 @@ async def download_video(event):
         msg = rmsg.text
     urls = extractor.find_urls(msg)
     if not urls:
-        return await edit_or_reply(event, "**⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا**")
+        return await edit_or_reply(
+            event, "**⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا**"
+        )
     catevent = await edit_or_reply(event, "⌯︙يتم البحث عن المطلوب انتظر")
     reply_to_id = await reply_id(event)
     for url in urls:
@@ -264,7 +266,12 @@ async def download_video(event):
                 file=ul,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(
-                        d, t, catevent, c_time, "جار الرفع  .  .  :", file_name=ytdl_data["title"]
+                        d,
+                        t,
+                        catevent,
+                        c_time,
+                        "جار الرفع  .  .  :",
+                        file_name=ytdl_data["title"],
                     )
                 ),
             )
@@ -289,7 +296,6 @@ async def download_video(event):
     await event.delete()
 
 
-
 @jmthon.ar_cmd(
     pattern="نتائج(?: |$)(\d*)? ?(.*)",
     command=("نتائج", plugin_category),
@@ -310,9 +316,7 @@ async def yt_search(event):
     else:
         query = str(event.pattern_match.group(2))
     if not query:
-        return await edit_delete(
-            event, "⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا"
-        )
+        return await edit_delete(event, "⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا")
     video_q = await edit_or_reply(event, "⌯︙يتم البحث عن المطلوب انتظر")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
