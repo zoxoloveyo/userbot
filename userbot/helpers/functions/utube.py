@@ -64,7 +64,9 @@ async def ytsearch(query, limit):
             textresult += f"**الشرح : **`{v['descriptionSnippet'][-1]['text']}`\n"
         except Exception:
             textresult += "**الشرح : لا يوجد**\n"
-        textresult += f"**الشرح : **{v['duration']}  **المشاهدات : ** {v['viewCount']['short']}\n"
+        textresult += (
+            f"**الشرح : **{v['duration']}  **المشاهدات : ** {v['viewCount']['short']}\n"
+        )
         result += f"⪼ {textresult}\n"
     return result
 
@@ -258,9 +260,7 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
                 )
             )
     buttons += sublists(video_btns, width=2)
-    buttons += [
-        [Button.inline(" 🎵 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a")]
-    ]
+    buttons += [[Button.inline(" 🎵 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a")]]
     buttons += sublists(
         [
             Button.inline(audio_dict.get(key_), data=f"ytdl_download_{vid}_{key_}_a")
@@ -300,9 +300,7 @@ def _tubeDl(url: str, starttime, uid: str):
     except DownloadError as e:
         LOGS.error(e)
     except GeoRestrictedError:
-        LOGS.error(
-            "⌔∮ هذا الفيديو غير متاح في بلدك"
-        )
+        LOGS.error("⌔∮ هذا الفيديو غير متاح في بلدك")
     else:
         return x
 
