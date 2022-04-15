@@ -50,10 +50,10 @@ G_DRIVE_DATA = Config.G_DRIVE_DATA
 G_DRIVE_FOLDER_ID = Config.G_DRIVE_FOLDER_ID
 TMP_DOWNLOAD_DIRECTORY = Config.TMP_DOWNLOAD_DIRECTORY
 
-ban_rz = "Jmthon/razan/resources/start/حظر.jpg"
-mute_rz = "Jmthon/razan/resources/start/كتم.jpg"
-promote_rz = "Jmthon/razan/resources/start/رفع.jpg"
-demote_rz = "Jmthon/razan/resources/start/تنزيل.jpg"
+ban_rz = "jmthon/razan/حظر.jpg"
+mute_rz = "jmthon/razan/كتم.jpg"
+promote_rz = "jmthon/razan/رفع.jpg"
+demote_rz = "jmthon/razan/تنزيل.jpg"
 
 
 # spamwatch support
