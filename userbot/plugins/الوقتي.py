@@ -19,8 +19,6 @@ from ..helpers.utils import _format
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import edit_delete, jmthon, logging
 
-plugin_category = "tools"
-
 DEFAULTUSERBIO = gvarstatus("DEFAULT_BIO") or " it just a jmthon userbot  "
 DEFAULTUSER = gvarstatus("DEFAULT_NAME") or Config.ALIVE_NAME
 LOGS = logging.getLogger(__name__)
