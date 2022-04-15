@@ -17,7 +17,7 @@ from telethon.tl import functions
 from ..Config import Config
 from ..helpers.utils import _format
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-from . import AUTONAME, DEFAULT_BIO, edit_delete, jmthon, logging
+from . import edit_delete, jmthon, logging
 
 plugin_category = "tools"
 
@@ -37,14 +37,11 @@ digitalpfp = (
     gvarstatus("DIGITAL_PIC") or "https://telegra.ph/file/aeaebe33b1f3988a0b690.jpg"
 )
 
-RR7PP = (
-     gvarstatus("RR7PP") or ""
-     )
+RR7PP = gvarstatus("RR7PP") or ""
 
 normzltext = "1234567890"
-namerzfont = (
-     gvarstatus("TI_FN") or "1234567890"
-     )
+namerzfont = gvarstatus("TI_FN") or "1234567890"
+
 
 async def digitalpicloop():
     DIGITALPICSTART = gvarstatus("digitalpic") == "true"
@@ -157,7 +154,14 @@ async def _(event):
 @jmthon.ar_cmd(pattern="انهاء ([\s\S]*)")
 async def _(event):
     input_str = event.pattern_match.group(1)
-    if input_str == "الصورة الوقتية"  or input_str == "الصورة الوقتيه" or input_str == "الصوره الوقتيه" or input_str == "صورة وقتية" or input_str == "صورة وقتيه" or input_str == "صوره وقتية":
+    if (
+        input_str == "الصورة الوقتية"
+        or input_str == "الصورة الوقتيه"
+        or input_str == "الصوره الوقتيه"
+        or input_str == "صورة وقتية"
+        or input_str == "صورة وقتيه"
+        or input_str == "صوره وقتية"
+    ):
         if gvarstatus("digitalpic") is not None and gvarstatus("digitalpic") == "true":
             delgvar("digitalpic")
             await event.client(
@@ -167,7 +171,12 @@ async def _(event):
             )
             return await edit_delete(event, "**⌔∮ تم ايقاف الصورة الوقتية بنجاح**")
         return await edit_delete(event, "**⌔∮ لم يتم تفعيل الصورة الوقتية بالأصل**")
-    if input_str == "اسم وقتي" or input_str == "اسم الوقتي" or input_str == "الاسم الوقتي" or input_str == "الاسم وقتي":
+    if (
+        input_str == "اسم وقتي"
+        or input_str == "اسم الوقتي"
+        or input_str == "الاسم الوقتي"
+        or input_str == "الاسم وقتي"
+    ):
         if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
             delgvar("autoname")
             await event.client(
@@ -184,16 +193,16 @@ async def _(event):
             return await edit_delete(event, "**⪼ تم ايقاف البايو الوقتي بنجاح 𓆰**")
         return await edit_delete(event, "**⌔∮ لم يتم تفعيل البايو الوقتي**")
     END_CMDS = [
-        "الصورة الوقتية", 
-        "الصورة الوقتيه", 
-        "الصوره الوقتيه", 
+        "الصورة الوقتية",
+        "الصورة الوقتيه",
+        "الصوره الوقتيه",
         "الصوره الوقتية",
-        "صورة وقتية", 
+        "صورة وقتية",
         "صوره وقتيه",
         "اسم وقتي",
-        "اسم وقتي", 
-        "اسم الوقتي", 
-        "الاسم وقتي", 
+        "اسم وقتي",
+        "اسم الوقتي",
+        "الاسم وقتي",
         "الاسم الوقتي",
         "بايو وقتي",
         "البايو الوقتي",
