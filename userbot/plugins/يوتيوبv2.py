@@ -5,7 +5,9 @@ import os
 import pathlib
 from time import time
 
+from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import types
+from telethon.tl.functions.contacts import UnblockRequest as unblock
 from telethon.utils import get_attributes
 from urlextract import URLExtract
 from wget import download
@@ -25,15 +27,14 @@ from ..core import pool
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import progress, reply_id
+from ..helpers.functions import delete_conv
 from ..helpers.functions.utube import _mp3Dl, get_yt_video_id, get_ytthumb, ytsearch
 from ..helpers.utils import _format
+from . import BOTLOG, BOTLOG_CHATID, jmthon
 
 BASE_YT_URL = "https://www.youtube.com/watch?v="
 extractor = URLExtract()
 LOGS = logging.getLogger(__name__)
-
-plugin_category = "تحميل"
-
 
 video_opts = {
     "format": "best",
@@ -47,7 +48,7 @@ video_opts = {
         {"key": "FFmpegVideoConvertor", "preferedformat": "mp4"},
         {"key": "FFmpegMetadata"},
     ],
-    "outtmpl": "cat_ytv.mp4",
+    "outtmpl": "jmthon_ytv.mp4",
     "logtostderr": False,
     "quiet": True,
 }
@@ -82,6 +83,7 @@ async def ytdl_down(event, opts, url):
     return ytdl_data
 
 
+
 async def fix_attributes(
     path, info_dict: dict, supports_streaming: bool = False, round_message: bool = False
 ) -> list:
@@ -97,12 +99,12 @@ async def fix_attributes(
         supports_streaming = True
 
     attributes, mime_type = get_attributes(path)
-    if suffix == "صوتي":
+    if suffix == "mp3":
         title = str(info_dict.get("title", info_dict.get("id", "Unknown title")))
         audio = types.DocumentAttributeAudio(
             duration=duration, voice=None, title=title, performer=uploader
         )
-    elif suffix == "فيديو":
+    elif suffix == "mp4":
         width = int(info_dict.get("width", 0))
         height = int(info_dict.get("height", 0))
         for attr in attributes:
@@ -139,22 +141,16 @@ async def fix_attributes(
     return new_attributes, mime_type
 
 
-@jmthon.ar_cmd(
-    pattern="تحميل(صوتي)(?:\s|$)([\s\S]*)",
-    command=("تحميل", plugin_category),
-)
+@jmthon.ar_cmd(pattern="تحميل فيديو(?:\s|$)([\s\S]*)")
 async def download_audio(event):
-    """To download audio from YouTube and many other sites."""
     msg = event.pattern_match.group(1)
     rmsg = await event.get_reply_message()
     if not msg and rmsg:
         msg = rmsg.text
     urls = extractor.find_urls(msg)
     if not urls:
-        return await edit_or_reply(
-            event, "**⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا**"
-        )
-    catevent = await edit_or_reply(event, "⌯︙يتم البحث عن المطلوب انتظر")
+        return await edit_or_reply(event, "⪼ يجب عليك وضع رابط الفيديو المراد تنزيل منه")
+    jmthonevent = await edit_or_reply(event, "⌔∮ يتم التحضير الى التنزيل انتظر قليلا  ، ")
     reply_to_id = await reply_id(event)
     for url in urls:
         try:
@@ -162,7 +158,7 @@ async def download_audio(event):
                 url, download=False
             )
         except ExtractorError:
-            vid_data = {"title": url, "uploader": "Jmthon", "formats": []}
+            vid_data = {"title": url, "uploader": "jmthon", "formats": []}
         startTime = time()
         retcode = await _mp3Dl(url=url, starttime=startTime, uid="320")
         if retcode != 0:
@@ -175,11 +171,9 @@ async def download_audio(event):
             else:
                 _fpath = _path
         if not _fpath:
-            return await edit_delete(
-                catevent, "**- لقد حدث خطأ اثناء التعرف على المعلومات**"
-            )
-        await catevent.edit(
-            f"**يتم التحضير الى رفع المقطع الصوتي:**\
+            return await edit_delete(jmthonevent, "**❃ غغير قادر على الرفع**")
+        await jmthonevent.edit(
+            f"**⪼ جار رفع المقطع الصوتي :**\
             \n**{vid_data['title']}***"
         )
         attributes, mime_type = get_attributes(str(_fpath))
@@ -196,9 +190,9 @@ async def download_audio(event):
                 progress(
                     d,
                     t,
-                    catevent,
+                    jmthonevent,
                     startTime,
-                    "جار الرفع  .  . ",
+                    "trying to upload",
                     file_name=os.path.basename(pathlib.Path(_fpath)),
                 )
             ),
@@ -214,47 +208,41 @@ async def download_audio(event):
         await event.client.send_file(
             event.chat_id,
             file=media,
-            caption=f"<b>File Name : </b><code>{vid_data.get('title', os.path.basename(pathlib.Path(_fpath)))}</code>",
+            caption=f"<b>⌔∮ اسم المقطع الصوتي : </b><code>{vid_data.get('title', os.path.basename(pathlib.Path(_fpath)))}</code>",
             supports_streaming=True,
             reply_to=reply_to_id,
             parse_mode="html",
         )
         for _path in [_fpath, thumb_pic]:
             os.remove(_path)
-    await catevent.delete()
+    await jmthonevent.delete()
 
 
-@jmthon.ar_cmd(
-    pattern="تحميل(فيديو)(?:\s|$)([\s\S]*)",
-    command=("تحميل", plugin_category),
-)
+@jmthon.ar_cmd(pattern="تحميل فيديو(?:\s|$)([\s\S]*)")
 async def download_video(event):
-    """To download video from YouTube and many other sites."""
     msg = event.pattern_match.group(1)
     rmsg = await event.get_reply_message()
     if not msg and rmsg:
         msg = rmsg.text
     urls = extractor.find_urls(msg)
     if not urls:
-        return await edit_or_reply(
-            event, "**⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا**"
-        )
-    catevent = await edit_or_reply(event, "⌯︙يتم البحث عن المطلوب انتظر")
+        return await edit_or_reply(event, "⪼ يجب عليك وضع رابط الفيديو المراد تنزيل منه")
+    jmthonevent = await edit_or_reply(event, "⌔∮ يتم التحضير الى التنزيل انتظر قليلا  ، ")
     reply_to_id = await reply_id(event)
     for url in urls:
-        ytdl_data = await ytdl_down(catevent, video_opts, url)
+        ytdl_data = await ytdl_down(jmthonevent, video_opts, url)
         if ytdl_down is None:
             return
         try:
-            f = pathlib.Path("cat_ytv.mp4")
+            f = pathlib.Path("jmthon_ytv.mp4")
             print(f)
-            catthumb = pathlib.Path("cat_ytv.jpg")
-            if not os.path.exists(catthumb):
-                catthumb = pathlib.Path("cat_ytv.webp")
-            if not os.path.exists(catthumb):
-                catthumb = None
-            await catevent.edit(
-                f"**التحضير لرفع الفيديو:**\
+            jmthonthumb = pathlib.Path("jmthon_ytv.jpg")
+            if not os.path.exists(jmthonthumb):
+                jmthonthumb = pathlib.Path("jmthon_ytv.webp")
+            if not os.path.exists(jmthonthumb):
+                jmthonthumb = None
+            await jmthonevent.edit(
+                f"**⌔∮ جار رفع الفيديو :**\
                 \n**{ytdl_data['title']}**"
             )
             ul = io.open(f, "rb")
@@ -266,12 +254,7 @@ async def download_video(event):
                 file=ul,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(
-                        d,
-                        t,
-                        catevent,
-                        c_time,
-                        "جار الرفع  .  .  :",
-                        file_name=ytdl_data["title"],
+                        d, t, jmthonevent, c_time, "Upload :", file_name=ytdl_data["title"]
                     )
                 ),
             )
@@ -285,39 +268,117 @@ async def download_video(event):
                 event.chat_id,
                 file=media,
                 reply_to=reply_to_id,
-                caption=f'**Title :** `{ytdl_data["title"]}`',
-                thumb=catthumb,
+                caption=f'**❃ العنوان :** `{ytdl_data["title"]}`',
+                thumb=jmthonthumb,
             )
             os.remove(f)
-            if catthumb:
-                os.remove(catthumb)
+            if jmthonthumb:
+                os.remove(jmthonthumb)
         except TypeError:
             await asyncio.sleep(2)
     await event.delete()
 
 
-@jmthon.ar_cmd(
-    pattern="نتائج(?: |$)(\d*)? ?(.*)",
-    command=("نتائج", plugin_category),
-    info={
-        "header": "يمكنك بحث فيديوهات عبر منصة اليوتيوب",
-        "description": "يجلب نتائج بحث منصة يوتيوب مع المشاهدات والمدة مع عدد النتائج المطلوبة فإنه يجلب 10 نتائج",
-        "examples": [
-            "{tr}نتائج <نص>",
-            "{tr}نتائج <1-9> <نص>",
-        ],
-    },
-)
+@jmthon.ar_cmd(pattern="انستا(?: |$)([\s\S]*)")
+async def insta_dl(event):
+    link = event.pattern_match.group(1)
+    reply = await event.get_reply_message()
+    if not link and reply:
+        link = reply.text
+    if not link:
+        return await edit_delete(event, "**⌔∮ يجب عليك وضع رابط للبحث عنه**", 10)
+    if "instagram.com" not in link:
+        return await edit_delete(
+            event, "**❃ عذرا هذه الميزه للتحميل من الانستجرام فقط**", 10
+        )
+    v1 = "@instasave_bot"
+    v2 = "@videomaniacbot"
+    media_list = []
+    jmthonevent = await edit_or_reply(event, "**⪼ جار التحميل انتظر قليلا**")
+    async with event.client.conversation(v1) as conv:
+        try:
+            v1_flag = await conv.send_message("/start")
+        except YouBlockedUserError:
+            await edit_or_reply(
+                jmthonevent, "**⪼ لقد حدث خطأ يرجى الغاء الحظر و المحاولة مره ثانيه**"
+            )
+            await jmthon(unblock("instasave_bot"))
+            v1_flag = await conv.send_message("/start")
+        response = await conv.get_response()
+        checker = response.text
+        await event.client.send_read_acknowledge(conv.chat_id)
+        if checker == "Welcome!":
+            await asyncio.sleep(2)
+            await conv.send_message(link)
+            media = await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            if media.media:
+                if media.grouped_id:
+                    while media.grouped_id:
+                        media_list.append(media)
+                        media = await conv.get_response()
+                else:
+                    media_list.append(media)
+                    media = await conv.get_response()
+                    await event.client.send_read_acknowledge(conv.chat_id)
+                details = media.message.splitlines()
+                await jmthonevent.delete()
+                await event.client.send_file(
+                    event.chat_id,
+                    media_list,
+                    caption=f"**{details[0]}**",
+                )
+                return await delete_conv(event, v1, v1_flag)
+            checker = media.message.splitlines()[2]
+        await delete_conv(event, v1, v1_flag)
+        await edit_or_reply(jmthonevent, "**⪼ جار التحميل من مصدر اخر**")
+        async with event.client.conversation(v2) as conv:
+            try:
+                v2_flag = await conv.send_message("/start")
+            except YouBlockedUserError:
+                await edit_or_reply(
+                    jmthonevent, "**⪼ لقد حدث خطأ يرجى الغاء الحظر و المحاولة مره ثانيه**"
+            )
+                await jmthon(unblock("videomaniacbot"))
+                v2_flag = await conv.send_message("/start")
+            await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            await asyncio.sleep(1)
+            await conv.send_message(link)
+            await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            media = await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            if media.media:
+                if BOTLOG and "join the channel" in checker:
+                    error = checker.splitlines()[2]
+                    await event.client.send_message(
+                        BOTLOG_CHATID,
+                        f"**⪼ حاليا نستخدم هذا البوت @instasave_bot للمصدر الاول، الي يطلب انضمام لهذه الدردشه حتى تستخدمه : {error}\n\n⪼ اذا عندك بوت تحميل من الانستا بدون اشتراك اجباري ارسله للمطور**",
+                    )
+                await jmthonevent.delete()
+                await event.client.send_file(event.chat_id, media)
+            else:
+                await edit_delete(
+                    jmthonevent,
+                    f"**#خطأ\nالمصدر الاول :** __{checker}__\n\n**المصدر الثاني :**__ {media.text}__",
+                    40,
+                )
+            await delete_conv(event, v2, v2_flag)
+
+
+@jmthon.ar_cmd(pattern="نتائج(?: |$)(\d*)? ?([\s\S]*)")
 async def yt_search(event):
-    "Youtube search command"
     if event.is_reply and not event.pattern_match.group(2):
         query = await event.get_reply_message()
         query = str(query.message)
     else:
         query = str(event.pattern_match.group(2))
     if not query:
-        return await edit_delete(event, "⌯︙ يرجى الرد على الرسالة او كتابة الرابط اولا")
-    video_q = await edit_or_reply(event, "⌯︙يتم البحث عن المطلوب انتظر")
+        return await edit_delete(
+            event, "**⌔∮ يجب وضع عنوان للبحث عليه اولا**"
+        )
+    video_q = await edit_or_reply(event, "**₰  يتم البحث انتظر قليلا**")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
         if lim <= 0:
@@ -328,5 +389,5 @@ async def yt_search(event):
         full_response = await ytsearch(query, limit=lim)
     except Exception as e:
         return await edit_delete(video_q, str(e), time=10, parse_mode=_format.parse_pre)
-    reply_text = f"⌯︙• البحث :\n`{query}`\n\n⌯︙•  نتائج :\n{full_response}"
+    reply_text = f"**⪼ عنوان البحث:**\n`{query}`\n\n**⪼  النتائج:**\n{full_response}"
     await edit_or_reply(video_q, reply_text)
