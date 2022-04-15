@@ -6,7 +6,7 @@ RUN git clone https://github.com/Jmiqq/userbot.git /root/userbot
 WORKDIR /root/userbot
 
 # Install requirements
-RUN pip3 install --no-cache-dir mohamad/requirements.txt
+RUN pip3 install --no-cache-dir -r mohamad/requirements.txt
 
 ENV PATH="/home/userbot/mohamad/bin:$PATH"
 
