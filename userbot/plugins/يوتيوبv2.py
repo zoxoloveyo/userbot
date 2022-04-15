@@ -83,7 +83,6 @@ async def ytdl_down(event, opts, url):
     return ytdl_data
 
 
-
 async def fix_attributes(
     path, info_dict: dict, supports_streaming: bool = False, round_message: bool = False
 ) -> list:
@@ -149,8 +148,12 @@ async def download_audio(event):
         msg = rmsg.text
     urls = extractor.find_urls(msg)
     if not urls:
-        return await edit_or_reply(event, "⪼ يجب عليك وضع رابط الفيديو المراد تنزيل منه")
-    jmthonevent = await edit_or_reply(event, "⌔∮ يتم التحضير الى التنزيل انتظر قليلا  ، ")
+        return await edit_or_reply(
+            event, "⪼ يجب عليك وضع رابط الفيديو المراد تنزيل منه"
+        )
+    jmthonevent = await edit_or_reply(
+        event, "⌔∮ يتم التحضير الى التنزيل انتظر قليلا  ، "
+    )
     reply_to_id = await reply_id(event)
     for url in urls:
         try:
@@ -226,8 +229,12 @@ async def download_video(event):
         msg = rmsg.text
     urls = extractor.find_urls(msg)
     if not urls:
-        return await edit_or_reply(event, "⪼ يجب عليك وضع رابط الفيديو المراد تنزيل منه")
-    jmthonevent = await edit_or_reply(event, "⌔∮ يتم التحضير الى التنزيل انتظر قليلا  ، ")
+        return await edit_or_reply(
+            event, "⪼ يجب عليك وضع رابط الفيديو المراد تنزيل منه"
+        )
+    jmthonevent = await edit_or_reply(
+        event, "⌔∮ يتم التحضير الى التنزيل انتظر قليلا  ، "
+    )
     reply_to_id = await reply_id(event)
     for url in urls:
         ytdl_data = await ytdl_down(jmthonevent, video_opts, url)
@@ -254,7 +261,12 @@ async def download_video(event):
                 file=ul,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(
-                        d, t, jmthonevent, c_time, "Upload :", file_name=ytdl_data["title"]
+                        d,
+                        t,
+                        jmthonevent,
+                        c_time,
+                        "Upload :",
+                        file_name=ytdl_data["title"],
                     )
                 ),
             )
@@ -337,8 +349,9 @@ async def insta_dl(event):
                 v2_flag = await conv.send_message("/start")
             except YouBlockedUserError:
                 await edit_or_reply(
-                    jmthonevent, "**⪼ لقد حدث خطأ يرجى الغاء الحظر و المحاولة مره ثانيه**"
-            )
+                    jmthonevent,
+                    "**⪼ لقد حدث خطأ يرجى الغاء الحظر و المحاولة مره ثانيه**",
+                )
                 await jmthon(unblock("videomaniacbot"))
                 v2_flag = await conv.send_message("/start")
             await conv.get_response()
@@ -375,9 +388,7 @@ async def yt_search(event):
     else:
         query = str(event.pattern_match.group(2))
     if not query:
-        return await edit_delete(
-            event, "**⌔∮ يجب وضع عنوان للبحث عليه اولا**"
-        )
+        return await edit_delete(event, "**⌔∮ يجب وضع عنوان للبحث عليه اولا**")
     video_q = await edit_or_reply(event, "**₰  يتم البحث انتظر قليلا**")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
