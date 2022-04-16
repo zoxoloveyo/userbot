@@ -12,9 +12,9 @@ from ..sql_helper.welcome_sql import (
     update_previous_welcome,
 )
 from . import BOTLOG_CHATID
-from ..Config import Config
 
 LOGS = logging.getLogger(__name__)
+
 
 @jmthon.on(events.ChatAction)
 async def _(event):
@@ -80,6 +80,7 @@ async def _(event):
         )
         update_previous_welcome(event.chat_id, current_message.id)
 
+
 @jmthon.ar_cmd(pattern="ترحيب(?:\s|$)([\s\S]*)")
 async def save_welcome(event):
     msg = await event.get_reply_message()
@@ -141,12 +142,15 @@ async def show_welcome(event):
         )
         await event.reply(cws.reply)
 
+
 @jmthon.ar_cmd(pattern="الترحيب السابق (تشغيل|ايقاف)$")
 async def del_welcome(event):
     input_str = event.pattern_match.group(1)
     if input_str == "تشغيل":
         if gvarstatus("clean_welcome") is None:
-            return await edit_delete(event, "**⌔∮ رسالة الترحيب السابقة تم تشغيلها بالفعل**")
+            return await edit_delete(
+                event, "**⌔∮ رسالة الترحيب السابقة تم تشغيلها بالفعل**"
+            )
         delgvar("clean_welcome")
         return await edit_delete(
             event,
