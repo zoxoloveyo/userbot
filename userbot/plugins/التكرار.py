@@ -15,7 +15,6 @@ from ..sql_helper.globals import addgvar, gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
 
 
-
 async def spam_function(event, RR7PP, jmthon, sleeptimem, sleeptimet, DelaySpam=False):
 
     counter = int(jmthon[0])
