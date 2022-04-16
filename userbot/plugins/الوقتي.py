@@ -19,7 +19,7 @@ from ..helpers.utils import _format
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import edit_delete, jmthon, logging
 
-DEFAULTUSERBIO = gvarstatus("DEFAULT_BIO") or " it just a jmthon userbot  "
+DEFAULTUSERBIO = gvarstatus("BIO") or " ﴿ لا تَحزَن إِنَّ اللَّهَ مَعَنا ﴾  "
 DEFAULTUSER = gvarstatus("DEFAULT_NAME") or Config.ALIVE_NAME
 LOGS = logging.getLogger(__name__)
 CHANGE_TIME = int(gvarstatus("CHANGE_TIME")) if gvarstatus("CHANGE_TIME") else 60
@@ -32,7 +32,7 @@ digitalpic_path = os.path.join(os.getcwd(), "userbot", "digital_pic.png")
 autophoto_path = os.path.join(os.getcwd(), "userbot", "photo_pfp.png")
 
 digitalpfp = (
-    gvarstatus("DIGITAL_PIC") or "https://telegra.ph/file/aeaebe33b1f3988a0b690.jpg"
+    gvarstatus("AUTOPIC") or "https://telegra.ph/file/aeaebe33b1f3988a0b690.jpg"
 )
 
 RR7PP = gvarstatus("RR7PP") or ""
