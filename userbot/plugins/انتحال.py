@@ -5,12 +5,17 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 from ..Config import Config
 from ..sql_helper.globals import gvarstatus
-from . import ALIVE_NAME, BOTLOG, BOTLOG_CHATID, jmthon, edit_delete, get_user_from_event
+from . import (
+    ALIVE_NAME,
+    BOTLOG,
+    BOTLOG_CHATID,
+    edit_delete,
+    get_user_from_event,
+    jmthon,
+)
 
 DEFAULTUSER = gvarstatus("FIRST_NAME") or ALIVE_NAME
-DEFAULTUSERBIO = (
-    gvarstatus("BIO") or "﴿ لا تَحزَن إِنَّ اللَّهَ مَعَنا ﴾"
-)
+DEFAULTUSERBIO = gvarstatus("BIO") or "﴿ لا تَحزَن إِنَّ اللَّهَ مَعَنا ﴾"
 
 
 @jmthon.ar_cmd(pattern="انتحال(?:\s|$)([\s\S]*)")
