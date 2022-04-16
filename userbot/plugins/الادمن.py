@@ -26,8 +26,8 @@ from ..core.logger import logging
 from ..core.managers import edit_delete as eod
 from ..core.managers import edit_or_reply as eor
 from ..helpers import media_type
+from userbot.Config import Config
 from ..helpers.utils import _format, get_user_from_event
-from ..sql_helper.globals import gvarstatus
 from ..sql_helper.mute_sql import is_muted, mute, unmute
 from . import BOTLOG, BOTLOG_CHATID, ban_rz, demote_rz, mute_rz, promote_rz
 
@@ -61,9 +61,8 @@ UNBAN_RIGHTS = ChatBannedRights(
     send_inline=None,
     embed_links=None,
 )
-ADJM_PIC = gvarstatus("ADJM_PIC")
 
-# ADJM_PIC = Config.ADJM_PIC
+ADJM_PIC = Config.ADJM_PIC
 if ADJM_PIC:
     prmt_rz = ADJM_PIC
 else:
