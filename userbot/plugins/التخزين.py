@@ -86,9 +86,7 @@ async def log_tagged_messages(event):
     messaget = media_type(event)
     resalt = f"❃ المجموعه : </b><code>{hmm.title}</code>"
     if full is not None:
-        resalt += (
-            f"\n<b>❃ المرسل : </b> 👤{_format.htmlmentionuser(full.first_name , full.id)}"
-        )
+        resalt += f"\n<b>❃ المرسل : </b> 👤{_format.htmlmentionuser(full.first_name , full.id)}"
     if messaget is not None:
         resalt += f"\n<b>❃ رسالة جديدة : </b><code>{messaget}</code>"
     else:
@@ -103,8 +101,7 @@ async def log_tagged_messages(event):
         )
 
 
-@jmthon.ar_cmd(
-    pattern="خزن(?:\s|$)([\s\S]*)")
+@jmthon.ar_cmd(pattern="خزن(?:\s|$)([\s\S]*)")
 async def log(log_text):
     if BOTLOG:
         if log_text.reply_to_msg_id:
@@ -124,32 +121,25 @@ async def log(log_text):
     await log_text.delete()
 
 
-@jmthon.ar_cmd(
-    pattern="تفعيل التخزين$")
+@jmthon.ar_cmd(pattern="تفعيل التخزين$")
 async def set_no_log_p_m(event):
     if Config.PM_LOGGER_GROUP_ID != -100:
         chat = await event.get_chat()
         if no_log_pms_sql.is_approved(chat.id):
             no_log_pms_sql.disapprove(chat.id)
-            await edit_delete(
-                event, "**❃ تم تفعيل التخزين لهذه الدردشه بنجاح ✓**", 5
-            )
+            await edit_delete(event, "**❃ تم تفعيل التخزين لهذه الدردشه بنجاح ✓**", 5)
 
 
-@jmthon.ar_cmd(
-    pattern="تعطيل التخزين$")
+@jmthon.ar_cmd(pattern="تعطيل التخزين$")
 async def set_no_log_p_m(event):
     if Config.PM_LOGGER_GROUP_ID != -100:
         chat = await event.get_chat()
         if not no_log_pms_sql.is_approved(chat.id):
             no_log_pms_sql.approve(chat.id)
-            await edit_delete(
-                event, "**❃ تم تعطيل التخزين لهذه الدردشه بنجاح ✓**", 5
-            )
+            await edit_delete(event, "**❃ تم تعطيل التخزين لهذه الدردشه بنجاح ✓**", 5)
 
 
-@jmthon.ar_cmd(
-    pattern="تخزين الخاص (تشغيل|ايقاف)$")
+@jmthon.ar_cmd(pattern="تخزين الخاص (تشغيل|ايقاف)$")
 async def set_pmlog(event):
     input_str = event.pattern_match.group(1)
     if input_str == "ايقاف":
@@ -173,9 +163,7 @@ async def set_pmlog(event):
         await event.edit("**⌔∮ تخزين رسائل الخاص بالفعل معطلة **")
 
 
-
-@jmthon.ar_cmd(
-    pattern="تخزين الكروبات (تشغيل|ايقاف)$")
+@jmthon.ar_cmd(pattern="تخزين الكروبات (تشغيل|ايقاف)$")
 async def set_grplog(event):
     input_str = event.pattern_match.group(1)
     if input_str == "ايقاف":
