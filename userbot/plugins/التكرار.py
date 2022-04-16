@@ -147,7 +147,7 @@ async def spammer(event):
     await spam_function(event, reply, jmthon, sleeptimem, sleeptimet, DelaySpam=True)
 
 
-@jmthon.ar_cmd(pattern="تكرار الملصق"$)
+@jmthon.ar_cmd(pattern="تكرار الملصق$")
 async def stickerpack_spam(event):
     reply = await event.get_reply_message()
     if not reply or media_type(reply) is None or media_type(reply) != "Sticker":
