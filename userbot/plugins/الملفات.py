@@ -5,23 +5,13 @@ from ..Config import Config
 from ..utils import load_module, remove_plugin
 from . import CMD_HELP, CMD_LIST, SUDO_LIST, edit_delete, edit_or_reply, jmthon
 
-plugin_category = "tools"
 
 DELETE_TIMEOUT = 5
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 
 
-@jmthon.ar_cmd(
-    pattern="تنصيب$",
-    command=("تنصيب", plugin_category),
-    info={
-        "header": "To install an external plugin.",
-        "description": "Reply to any external plugin(supported by cat) to install it in your bot.",
-        "usage": "{tr}install",
-    },
-)
+@jmthon.ar_cmd(pattern="تنصيب$")
 async def install(event):
-    "To install an external plugin."
     if event.reply_to_msg_id:
         try:
             downloaded_file_name = await event.client.download_media(
@@ -43,23 +33,12 @@ async def install(event):
                     event, "**خـطأ اسم هذا الملـف موجود بالفعل في السورس**.", 10
                 )
         except Exception as e:
-            await edit_delete(event, f"**خـطأ:**\n`{e}`", 10)
+            await edit_delete(event, f"**خـطأ:**\n`{e}`", 20)
             os.remove(downloaded_file_name)
 
 
-@jmthon.ar_cmd(
-    pattern="الغاء تنصيب ([\s\S]*)",
-    command=("الغاء تنصيب", plugin_category),
-    info={
-        "header": "To uninstall a plugin temporarily.",
-        "description": "To stop functioning of that plugin and remove that plugin from bot.",
-        "note": "To unload a plugin permanently from bot set NO_LOAD var in heroku with that plugin name, give space between plugin names if more than 1.",
-        "usage": "{tr}uninstall <plugin name>",
-        "examples": "{tr}uninstall markdown",
-    },
-)
+@jmthon.ar_cmd(pattern="الغاء تنصيب ([\s\S]*)")
 async def unload(event):
-    "To uninstall a plugin."
     shortname = event.pattern_match.group(1)
     path = Path(f"userbot/plugins/{shortname}.py")
     if not os.path.exists(path):
