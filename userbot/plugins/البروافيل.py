@@ -59,9 +59,7 @@ async def _(event):
 @jmthon.ar_cmd(pattern="تغيير صورة$")
 async def _(event):
     reply_message = await event.get_reply_message()
-    jmthonevent = await edit_or_reply(
-        event, "يتم تحميل الصورة لحسابي ..."
-    )
+    jmthonevent = await edit_or_reply(event, "يتم تحميل الصورة لحسابي ...")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     photo = None
@@ -94,9 +92,7 @@ async def _(event):
             except Exception as e:
                 await jmthonevent.edit(f"**خطأ:**\n{e}")
             else:
-                await edit_or_reply(
-                    jmthonevent, "**❃ تم بنجاح تغيير صورة الحساب**"
-                )
+                await edit_or_reply(jmthonevent, "**❃ تم بنجاح تغيير صورة الحساب**")
     try:
         os.remove(photo)
     except Exception as e:
@@ -172,9 +168,7 @@ async def remove_profilepic(delpfp):
         for sep in pfplist.photos
     ]
     await delpfp.client(DeletePhotosRequest(id=input_photos))
-    await edit_delete(
-        delpfp, f"**⪼ تم بنجاح حذف {len(input_photos)} صورة الحساب**"
-    )
+    await edit_delete(delpfp, f"**⪼ تم بنجاح حذف {len(input_photos)} صورة الحساب**")
 
 
 @jmthon.ar_cmd(pattern="معرفاتي$")
