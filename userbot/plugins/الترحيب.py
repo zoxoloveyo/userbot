@@ -141,7 +141,7 @@ async def show_welcome(event):
         )
         await event.reply(cws.reply)
 
-@jmthon.ar_cmd(pattern="الترحيب السابق (تشغيل|ايقاف)$"))
+@jmthon.ar_cmd(pattern="الترحيب السابق (تشغيل|ايقاف)$")
 async def del_welcome(event):
     input_str = event.pattern_match.group(1)
     if input_str == "تشغيل":
