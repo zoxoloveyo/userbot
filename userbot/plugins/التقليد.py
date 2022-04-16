@@ -1,5 +1,3 @@
-from telethon.utils import get_display_name
-
 from userbot import jmthon
 
 from ..core.managers import edit_delete, edit_or_reply
@@ -35,9 +33,7 @@ async def echo(event):
     user_name = user.first_name
     user_username = user.username
     if is_echo(chat_id, user_id):
-        return await edit_or_reply(
-            event, "⌔∮ تم تفعيل وضع الازعاج على الشخص بنجاح ✓"
-        )
+        return await edit_or_reply(event, "⌔∮ تم تفعيل وضع الازعاج على الشخص بنجاح ✓")
     try:
         addecho(chat_id, user_id, chat_name, user_name, user_username, chat_type)
     except Exception as e:
@@ -52,9 +48,7 @@ async def echo(event):
 @jmthon.ar_cmd(pattern="الغاء تقليد$")
 async def echo(event):
     if event.reply_to_msg_id is None:
-        return await edit_or_reply(
-            event, "يجب عليك الرد على المستخدم لتقليد رسائله"
-        )
+        return await edit_or_reply(event, "يجب عليك الرد على المستخدم لتقليد رسائله")
     reply_msg = await event.get_reply_message()
     user_id = reply_msg.sender_id
     chat_id = event.chat_id
@@ -134,9 +128,7 @@ async def echo(event):
     else:
         lsts = get_echos(event.chat_id)
         if len(lsts) <= 0:
-            return await edit_or_reply(
-                event, "لم يتم تفعيل التقليد بالاصل" 
-            )
+            return await edit_or_reply(event, "لم يتم تفعيل التقليد بالاصل")
 
         for echos in lsts:
             if echos.user_username:
