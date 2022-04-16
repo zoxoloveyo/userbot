@@ -180,7 +180,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             event, "**₰ فشل في اكمال التحديث يبدو انه تم الغاء عمليه التحديث**"
         )
     try:
-        remote.push("master:main", force=True)
+        remote.push("main:master", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**⌔∮ هذا هو الخطأ الخاص بك:**\n`{error}`")
         return repo.__del__()
