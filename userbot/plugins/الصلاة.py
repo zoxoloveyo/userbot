@@ -2,12 +2,12 @@ import json
 
 import requests
 
-from ..sql_helper.globals import gvarstatus
-from . import jmthon, edit_delete, edit_or_reply
+from . import edit_delete, edit_or_reply, jmthon
+
 
 @jmthon.ar_cmd(pattern="صلاة(?:\s|$)([\s\S]*)")
 async def get_adzan(adzan):
-    input_str = adzan.pattern_match.group(1)
+    adzan.pattern_match.group(1)
     LOKASI = adzan.pattern_match.group(1)
     url = f"https://api.pray.zone/v2/times/today.json?city={LOKASI}"
     request = requests.get(url)
