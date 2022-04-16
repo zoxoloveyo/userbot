@@ -110,8 +110,7 @@ async def spam_function(event, RR7PP, jmthon, sleeptimem, sleeptimet, DelaySpam=
             )
 
 
-@jmthon.ar_cmd(
-    pattern="كرر (.*)")
+@jmthon.ar_cmd(pattern="كرر (.*)")
 async def spammer(event):
     RR7PP = await event.get_reply_message()
     jmthon = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
@@ -132,9 +131,7 @@ async def spammer(event):
     await spam_function(event, RR7PP, jmthon, sleeptimem, sleeptimet)
 
 
-@jmthon.ar_cmd(
-    pattern="مكرر (.*)"
-)
+@jmthon.ar_cmd(pattern="مكرر (.*)")
 async def spammer(event):
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
@@ -150,9 +147,7 @@ async def spammer(event):
     await spam_function(event, reply, jmthon, sleeptimem, sleeptimet, DelaySpam=True)
 
 
-@jmthon.ar_cmd(
-    pattern="تكرار الملصق"$
-)
+@jmthon.ar_cmd(pattern="تكرار الملصق"$)
 async def stickerpack_spam(event):
     reply = await event.get_reply_message()
     if not reply or media_type(reply) is None or media_type(reply) != "Sticker":
@@ -220,8 +215,7 @@ async def stickerpack_spam(event):
         await event.client.send_file(BOTLOG_CHATID, reqd_sticker_set.documents[0])
 
 
-@jmthon.ar_cmd(
-    pattern="سبام (.*)")
+@jmthon.ar_cmd(pattern="سبام (.*)")
 async def tmeme(event):
     cspam = str("".join(event.text.split(maxsplit=1)[1:]))
     message = cspam.replace(" ", "")
@@ -246,8 +240,7 @@ async def tmeme(event):
             )
 
 
-@jmthon.ar_cmd(
-    pattern="وسبام (.*)")
+@jmthon.ar_cmd(pattern="وسبام (.*)")
 async def tmeme(event):
     wspam = str("".join(event.text.split(maxsplit=1)[1:]))
     message = wspam.split()
