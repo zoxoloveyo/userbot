@@ -1,13 +1,13 @@
-import os
-import re
-from telethon import Button
 from asyncio import sleep
+
 from geopy.geocoders import Nominatim
+from telethon import Button
 from telethon.tl import types
+
 from ..core.managers import edit_or_reply
 from ..helpers import reply_id
-from ..Config import Config
-from . import jmthon, edit_delete, reply_id
+from . import edit_delete, jmthon, reply_id
+
 
 @jmthon.ar_cmd(pattern="لستة(?: |$)(.*)")
 async def _(event):
@@ -32,6 +32,7 @@ def build_keyboard(buttons):
             keyb.append([Button.url(btn[0], btn[1])])
     return keyb
 
+
 @jmthon.ar_cmd(pattern="موقع ([\s\S]*)")
 async def gps(event):
     reply_to_id = await reply_id(event)
@@ -51,6 +52,7 @@ async def gps(event):
         await catevent.delete()
     else:
         await catevent.edit("⪼ لم أجد الموقع 𓆰")
+
 
 @jmthon.ar_cmd(pattern="مؤقتا (\d*) ([\s\S]*)")
 async def _(event):
