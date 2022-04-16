@@ -21,12 +21,12 @@ from telethon.tl.types import (
 from telethon.utils import get_display_name
 
 from userbot import jmthon
+from userbot.Config import Config
 
 from ..core.logger import logging
 from ..core.managers import edit_delete as eod
 from ..core.managers import edit_or_reply as eor
 from ..helpers import media_type
-from userbot.Config import Config
 from ..helpers.utils import _format, get_user_from_event
 from ..sql_helper.mute_sql import is_muted, mute, unmute
 from . import BOTLOG, BOTLOG_CHATID, ban_rz, demote_rz, mute_rz, promote_rz
