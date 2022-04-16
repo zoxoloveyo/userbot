@@ -115,7 +115,7 @@ async def save_welcome(event):
 
 
 @jmthon.ar_cmd(pattern="حذف الترحيبات$")
-async def del_welcome(event)
+async def del_welcome(event):
     if rm_welcome_setting(event.chat_id) is True:
         await edit_or_reply(event, "❃ تم حذف الترحيبات بنجاح من الدردشه.")
     else:
