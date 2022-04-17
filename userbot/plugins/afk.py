@@ -12,7 +12,6 @@ from ..helpers.tools import media_type
 from ..helpers.utils import _format
 from . import BOTLOG, BOTLOG_CHATID
 
-
 LOGS = logging.getLogger(__name__)
 
 
@@ -113,22 +112,16 @@ async def on_afk(event):
         msg = None
         if AFK_.afk_type == "media":
             if AFK_.reason:
-                message_to_reply = (
-                    f"انا الان في وضعيه عدم الاتصال منذ\n`{endtime}`\nالسبب : {AFK_.reason}"
-                )
+                message_to_reply = f"انا الان في وضعيه عدم الاتصال منذ\n`{endtime}`\nالسبب : {AFK_.reason}"
             else:
                 message_to_reply = f"انا الان في وضعيه عدم الاتصال منذ\n`{endtime}`"
             if event.chat_id:
                 msg = await event.reply(message_to_reply, file=AFK_.media_afk.media)
         elif AFK_.afk_type == "text":
             if AFK_.msg_link and AFK_.reason:
-                message_to_reply = (
-                    f"انا الان في وضعيه عدم الاتصال منذ .\n\n{endtime}\nالسبب : {AFK_.reason}"
-                )
+                message_to_reply = f"انا الان في وضعيه عدم الاتصال منذ .\n\n{endtime}\nالسبب : {AFK_.reason}"
             elif AFK_.reason:
-                message_to_reply = (
-                    f"انا الان في وضعيه عدم الاتصال منذ .\n\n{endtime}\nالسبب : {AFK_.reason}"
-                )
+                message_to_reply = f"انا الان في وضعيه عدم الاتصال منذ .\n\n{endtime}\nالسبب : {AFK_.reason}"
             else:
                 message_to_reply = f"انا الان في وضعيه عدم الاتصال منذ.\n\n{endtime}"
             if event.chat_id:
@@ -164,8 +157,7 @@ async def on_afk(event):
             )
 
 
-@jmthon.ar_cmd(
-    pattern="سليب(?:\s|$)([\s\S]*)")
+@jmthon.ar_cmd(pattern="سليب(?:\s|$)([\s\S]*)")
 async def _(event):
     AFK_.USERAFK_ON = {}
     AFK_.afk_time = None
@@ -209,8 +201,7 @@ async def _(event):
                 )
 
 
-@jmthon.ar_cmd(
-    pattern="سليب_ميديا(?:\s|$)([\s\S]*)")
+@jmthon.ar_cmd(pattern="سليب_ميديا(?:\s|$)([\s\S]*)")
 async def _(event):
     reply = await event.get_reply_message()
     media_t = media_type(reply)
