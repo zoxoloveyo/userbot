@@ -5,9 +5,8 @@ from userbot import jmthon
 from ..core.managers import edit_or_reply
 from ..sql_helper import warns_sql as sql
 
-@jmthon.ar_cmd(
-    pattern="تحذير(?:\s|$)([\s\S]*)"
-)
+
+@jmthon.ar_cmd(pattern="تحذير(?:\s|$)([\s\S]*)")
 async def _(event):
     warn_reason = event.pattern_match.group(1)
     if not warn_reason:
@@ -37,13 +36,14 @@ async def _(event):
             reply += "\n**▸┊سبب التحذير الأخير **\n{}".format(html.escape(warn_reason))
     await edit_or_reply(event, reply)
 
-@jmthon.ar_cmd(
-    pattern="التحذيرات"
-)
+
+@jmthon.ar_cmd(pattern="التحذيرات")
 async def _(event):
     reply_message = await event.get_reply_message()
     if not reply_message:
-        return await edit_delete(event, "**▸┊قم بالرد ع المستخدم للحصول ع تحذيراته . ☻**")
+        return await edit_delete(
+            event, "**▸┊قم بالرد ع المستخدم للحصول ع تحذيراته . ☻**"
+        )
     result = sql.get_warns(reply_message.sender_id, event.chat_id)
     if not result or result[0] == 0:
         return await edit_or_reply(event, "__▸┊هذا المستخدم ليس لديه أي تحذير! ツ__")
@@ -59,17 +59,15 @@ async def _(event):
 
     text = "**▸┊[ المستخدم 👤](tg://user?id={}) **لديه {}/{} تحذيرات ، للأسباب : ↶**".format(
         num_warns, limit
-            )
-
-    text = "**▸┊ المستخدم لديه {}/{} تحذيرات ، للأسباب : ↶:".format(
-        num_warns, limit
     )
+
+    text = "**▸┊ المستخدم لديه {}/{} تحذيرات ، للأسباب : ↶:".format(num_warns, limit)
     text += "\r\n"
     text += reasons
     await event.edit(text)
 
-@jmthon.ar_cmd(
-    pattern="حذف التحذير(?: |$)(.*)")
+
+@jmthon.ar_cmd(pattern="حذف التحذير(?: |$)(.*)")
 async def _(event):
     reply_message = await event.get_reply_message()
     sql.reset_warns(reply_message.sender_id, event.chat_id)
