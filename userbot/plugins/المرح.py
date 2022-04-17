@@ -8,8 +8,10 @@
 # ===============================================================
 
 import random
-from userbot import jmthon
+
 from jmthon.strings import *
+from userbot import jmthon
+
 from ..core.managers import edit_or_reply
 from ..helpers import get_user_from_event
 
@@ -198,6 +200,7 @@ async def permalink(mention):
     rzona = random.choice(osfroz)
     await edit_or_reply(mention, f"{rzona}")
 
+
 @jmthon.ar_cmd(pattern="شغله(?: |$)(.*)")
 async def permalink(mention):
     user, custom = await get_user_from_event(mention)
@@ -208,6 +211,8 @@ async def permalink(mention):
     await edit_or_reply(
         mention, f"- المستخدم [{muh}](tg://user?id={user.id}) شغله هو {rezw}"
     )
+
+
 @jmthon.ar_cmd(pattern="نسبة الرجولة(?: |$)(.*)")
 async def permalink(mention):
     user, custom = await get_user_from_event(mention)
@@ -225,6 +230,7 @@ async def permalink(mention):
         mention, f"- نسبة الرجولة لـ [{muh}](tg://user?id={user.id}) هـي {sos} 🥵🖤"
     )
 
+
 @jmthon.ar_cmd(pattern="رفع حيوان(?: |$)(.*)")
 async def permalink(mention):
     user, custom = await get_user_from_event(mention)
@@ -236,6 +242,7 @@ async def permalink(mention):
     await edit_or_reply(
         mention, f"- المستخدم [{tag}](tg://user?id={user.id}) \n- تـم رفعـه حيوان 🐏"
     )
+
 
 @jmthon.ar_cmd(pattern="رفع بزون(?: |$)(.*)")
 async def permalink(mention):
@@ -249,6 +256,7 @@ async def permalink(mention):
         mention, f"- المستخدم [{tag}](tg://user?id={user.id}) \n- تـم رفعـه بزون 🐈"
     )
 
+
 @jmthon.ar_cmd(pattern="رفع زاحف(?: |$)(.*)")
 async def permalink(mention):
     user, custom = await get_user_from_event(mention)
@@ -260,4 +268,3 @@ async def permalink(mention):
     await edit_or_reply(
         mention, f"- المستخدم [{tag}](tg://user?id={user.id}) \n- تـم رفعـه زاحف 🐍💞"
     )
-
