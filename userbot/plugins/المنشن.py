@@ -5,8 +5,7 @@ from userbot import jmthon
 from ..helpers.utils import get_user_from_event, reply_id
 
 
-@jmthon.ar_cmd(
-    pattern="(تاك للكل|للكل)(?:\s|$)([\s\S]*)")
+@jmthon.ar_cmd(pattern="(تاك للكل|للكل)(?:\s|$)([\s\S]*)")
 async def _(event):
     reply_to_id = await reply_id(event)
     input_str = event.pattern_match.group(2)
@@ -18,8 +17,7 @@ async def _(event):
     await event.delete()
 
 
-@jmthon.ar_cmd(
-    pattern="تبليغ$")
+@jmthon.ar_cmd(pattern="تبليغ$")
 async def _(event):
     mentions = "- انتباه الى المشرفين تم تبليغكم \n@admin"
     chat = await event.get_input_chat()
@@ -33,8 +31,7 @@ async def _(event):
     await event.delete()
 
 
-@jmthon.ar_cmd(
-    pattern="منشن ([\s\S]*)")
+@jmthon.ar_cmd(pattern="منشن ([\s\S]*)")
 async def _(event):
     user, input_str = await get_user_from_event(event)
     if not user:
