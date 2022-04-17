@@ -140,7 +140,7 @@ async def fix_attributes(
     return new_attributes, mime_type
 
 
-@jmthon.ar_cmd(pattern="تحميل فيديو(?:\s|$)([\s\S]*)")
+@jmthon.ar_cmd(pattern="تحميل صوتي(?:\s|$)([\s\S]*)")
 async def download_audio(event):
     msg = event.pattern_match.group(1)
     rmsg = await event.get_reply_message()
@@ -174,7 +174,7 @@ async def download_audio(event):
             else:
                 _fpath = _path
         if not _fpath:
-            return await edit_delete(jmthonevent, "**❃ غغير قادر على الرفع**")
+            return await edit_delete(jmthonevent, "**❃ غير قادر على الرفع**")
         await jmthonevent.edit(
             f"**⪼ جار رفع المقطع الصوتي :**\
             \n**{vid_data['title']}***"
