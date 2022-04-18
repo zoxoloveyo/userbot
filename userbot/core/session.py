@@ -6,8 +6,8 @@
 # Please read the GNU Affero General Public License in;
 # < https://github.com/JMTHON-AR/JM-THON/blob/master/LICENSE
 # ===============================================================
-import sys
 import os
+import sys
 
 try:
     from pytgcalls import PyTgCalls
