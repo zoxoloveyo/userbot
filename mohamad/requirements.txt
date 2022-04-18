@@ -25,7 +25,7 @@ googletrans==4.0.0-rc1
 gsearch
 git+https://github.com/buddhhu/img2html.git
 git+https://github.com/yt-dlp/yt-dlp
-git+https://github.com/MarshalX/tgcalls
+git+https://github.com/pytgcalls/pytgcalls
 gtts
 hachoir
 heroku3
