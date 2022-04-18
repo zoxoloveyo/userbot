@@ -3,8 +3,7 @@ from userbot import jmthon
 GCAST_BLACKLIST = [
     -1001118102804,
     -1001161919602,
-    ]
-
+]
 
 
 @jmthon.ar_cmd(pattern="للكروبات(?: |$)(.*)")
@@ -15,7 +14,9 @@ async def gcast(event):
     elif event.is_reply:
         msg = await event.get_reply_message()
     else:
-        await edit_or_reply(event, "**⌔∮ يجب الرد على رساله او وسائط او كتابه النص مع الامر**")
+        await edit_or_reply(
+            event, "**⌔∮ يجب الرد على رساله او وسائط او كتابه النص مع الامر**"
+        )
         return
     roz = await edit_or_reply(event, "⌔∮ يتم الاذاعة في الخاص انتظر لحضه")
     er = 0
@@ -32,7 +33,8 @@ async def gcast(event):
     await roz.edit(
         f"**⌔∮  تم بنجاح الأذاعة الى ** `{done}` **من الدردشات ، خطأ في ارسال الى ** `{er}` **من الدردشات**"
     )
-    
+
+
 @jmthon.ar_cmd(pattern="للخاص(?: |$)(.*)")
 async def gucast(event):
     jmthon = event.pattern_match.group(1)
@@ -41,7 +43,9 @@ async def gucast(event):
     elif event.is_reply:
         msg = await event.get_reply_message()
     else:
-        await edit_or_reply(event, "**⌔∮ يجب الرد على رساله او وسائط او كتابه النص مع الامر**")
+        await edit_or_reply(
+            event, "**⌔∮ يجب الرد على رساله او وسائط او كتابه النص مع الامر**"
+        )
         return
     roz = await edit_or_reply(event, "⌔∮ يتم الاذاعة في الخاص انتظر لحضه")
     er = 0
@@ -57,5 +61,3 @@ async def gucast(event):
     await roz.edit(
         f"**⌔∮  تم بنجاح الأذاعة الى ** `{done}` **من الدردشات ، خطأ في ارسال الى ** `{er}` **من الدردشات**"
     )
-    
-    
