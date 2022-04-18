@@ -52,9 +52,7 @@ lst.append([Button.inline("=", data="calc=")])
 @jmthon.ar_cmd(pattern="الحاسبة(?:\s|$)([\s\S]*)")
 async def icalc(e):
     if e.client._bot:
-        return await e.reply(
-            "**الحاسبة العلمية لسورس جمثون\n @JMTHON**", buttons=lst
-        )
+        return await e.reply("**الحاسبة العلمية لسورس جمثون\n @JMTHON**", buttons=lst)
     results = await e.client.inline_query(Config.TG_BOT_USERNAME, "calc")
     await results[0].click(e.chat_id, silent=True, hide_via=True)
     await e.delete()
@@ -171,4 +169,3 @@ async def _(e):
     lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
     lst.append([Button.inline("=", data="calc=")])
     await e.edit("**الحاسبة العلمية لسورس جمثون\n @JMTHON**", buttons=lst)
-
