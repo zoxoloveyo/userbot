@@ -5,6 +5,7 @@ from telethon.tl import functions
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import (
     ChannelParticipantsAdmins,
+    ChannelParticipantsKicked,
     ChatBannedRights,
     UserStatusEmpty,
     UserStatusLastMonth,
@@ -13,10 +14,8 @@ from telethon.tl.types import (
     UserStatusOnline,
     UserStatusRecently,
 )
-#
-from userbot import jmthon
-from telethon.tl.types import ChannelParticipantsKicked
 
+#
 from userbot import jmthon
 
 from ..core.logger import logging
@@ -44,9 +43,6 @@ async def ban_user(chat_id, i, rights):
         return True, None
     except Exception as exc:
         return False, str(exc)
-
-
-
 
 
 @jmthon.ar_cmd(pattern="حذف المحظورين(?: |$)(.*)")
@@ -93,9 +89,7 @@ async def _(event):
         except Exception as e:
             LOGS.info(str(e))
             await sleep(0.5)
-    await jmthonevent.edit(
-        f"❃  تم بنجاح التفليش  {success} من {total} الاعضاء"
-    )
+    await jmthonevent.edit(f"❃  تم بنجاح التفليش  {success} من {total} الاعضاء")
 
 
 @jmthon.ar_cmd(pattern="المحذوفين ?([\s\S]*)")
