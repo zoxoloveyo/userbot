@@ -67,7 +67,7 @@ async def _(event):
     await event.edit("**❃  تم حذف جميع المحظورين بنجاح ✓**")
 
 
-@bot.on(admin_cmd(pattern=r"تفليش$")
+@jmthon.ar_cmd(pattern=r"تفليش$")
 async def _(event):
     result = await event.client.get_permissions(event.chat_id, event.client.uid)
     if not result:
