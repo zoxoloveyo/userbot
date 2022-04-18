@@ -8,12 +8,11 @@
 # ===============================================================
 import sys
 
+from pytgcalls import PyTgCalls
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 
 from ..Config import Config
-from pySmartDL import SmartDL
-from pytgcalls import PyTgCalls
 from .client import JmthonUserBotClient
 
 __version__ = "2.10.6"
@@ -35,7 +34,7 @@ try:
         connection=ConnectionTcpAbridged,
         auto_reconnect=True,
         connection_retries=None,
-    )   
+    )
     call_py = PyTgCalls(jmthon)
 except Exception as e:
     print(f"[STRING SESSION] - {str(e)}")
