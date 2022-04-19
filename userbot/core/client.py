@@ -5,7 +5,6 @@ import re
 import sys
 import traceback
 from pathlib import Path
-from userbot import jmthon
 from typing import Dict, List, Union
 
 from telethon import TelegramClient, events
