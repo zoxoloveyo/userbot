@@ -208,8 +208,7 @@ class JmthonUserBotClient(TelegramClient):
                         LOADED_CMDS[command[0]].append(wrapper)
                     except BaseException:
                         LOADED_CMDS.update({command[0]: [wrapper]})
-                if jmthon: 
-                       if edited:
+            if edited:
                     jmthon.add_event_handler(
                         wrapper,
                         MessageEdited(pattern=REGEX_.regex1, outgoing=True, **kwargs),
