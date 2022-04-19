@@ -10,10 +10,9 @@ import os
 import sys
 
 try:
-    from pytgcalls import PyTgCalls
+    pass
 except ModuleNotFoundError:
     os.system("pip3 install py-tgcalls")
-    from pytgcalls import PyTgCalls
 
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
