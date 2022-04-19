@@ -41,7 +41,6 @@ try:
         auto_reconnect=True,
         connection_retries=None,
     )
-    call_py = PyTgCalls(jmthon)
 except Exception as e:
     print(f"[STRING SESSION] - {str(e)}")
     sys.exit()
