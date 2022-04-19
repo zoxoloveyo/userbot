@@ -243,7 +243,7 @@ class JmthonUserBotClient(TelegramClient):
                     LOADED_CMDS[file_test].append(func)
                 except BaseException:
                     LOADED_CMDS.update({file_test: [func]})
-                if edited:
+                      if edited:
                     jmthon.add_event_handler(func, events.MessageEdited(**kwargs))
                 jmthon.add_event_handler(func, events.NewMessage(**kwargs))
             return wrapper
