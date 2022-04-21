@@ -245,11 +245,11 @@ class JmthonUserBotClient(TelegramClient):
                     LOADED_CMDS.update({file_test: [func]})
         if jmthon:
              if edited:
-                jmthon.add_event_handler(func, events.MessageEdited(**kwargs))
+                    jmthon.add_event_handler(func, events.MessageEdited(**kwargs))
                 jmthon.add_event_handler(func, events.NewMessage(**kwargs))
         if JMTHON2:
              if edited:
-                JMTHON2.add_event_handler(func, events.MessageEdited(**kwargs))
+                    JMTHON2.add_event_handler(func, events.MessageEdited(**kwargs))
                 JMTHON2.add_event_handler(func, events.NewMessage(**kwargs))
             return wrapper
 
