@@ -180,9 +180,7 @@ async def do_pm_options_action(event, chat):
     except AttributeError:
         PMMESSAGE_CACHE = {}
     if str(chat.id) not in PM_WARNS:
-        text = (
-            "- اختار احد الخيارات في الأعلى ولا تكرر اختيارك وهذا اخر تحذير لك"
-        )
+        text = "- اختار احد الخيارات في الأعلى ولا تكرر اختيارك وهذا اخر تحذير لك"
         await event.reply(text)
         PM_WARNS[str(chat.id)] = 1
         sql.del_collection("pmwarns")
@@ -638,7 +636,7 @@ async def on_plug_in_callback_query_handler(event):
     await event.edit(text)
 
 
-@jmthon.ar_cmd(pattern="الحماية (تشغيل|تعطيل)$") # ترجمه وكتابة فريق جمثون
+@jmthon.ar_cmd(pattern="الحماية (تشغيل|تعطيل)$")  # ترجمه وكتابة فريق جمثون
 async def pmpermit_on(event):
     input_str = event.pattern_match.group(1)
     if input_str == "تشغيل":
@@ -820,9 +818,8 @@ async def block_p_m(event):
         f"[{user.first_name}](tg://user?id={user.id})\n تم حظره بنجاح لا يمكنه مراسلتك بعد الان \nالسبب: {reason}",
     )
 
-@jmthon.ar_cmd(
-    pattern="الخاص بلوك(?:\s|$)([\s\S]*)",
-    command=("الخاص حظر", "utils"))
+
+@jmthon.ar_cmd(pattern="الخاص بلوك(?:\s|$)([\s\S]*)", command=("الخاص حظر", "utils"))
 async def block_p_m(event):
     if gvarstatus("pmpermit") is None:
         return await edit_or_reply(
@@ -863,9 +860,10 @@ async def block_p_m(event):
                 sed += 1
     await edit_or_reply(
         event,
-                f"♦️ تم بنجاح حظر  :- {lol}\n🚩 فشل في حظر :- {sed}",
+        f"♦️ تم بنجاح حظر  :- {lol}\n🚩 فشل في حظر :- {sed}",
     )
-        
+
+
 @jmthon.ar_cmd(pattern="انبلوك(?:\s|$)([\s\S]*)")
 async def unblock_pm(event):
     if gvarstatus("pmpermit") is None:
@@ -909,4 +907,3 @@ async def approve_p_m(event):
         file_name="قائمة الحماية جمثون.txt",
         caption="قائمة المسموح لهم الحالية\n سورس جمثون العربي \n @JMTHON",
     )  # ترجمه وكتابة فريق جمثون
-
