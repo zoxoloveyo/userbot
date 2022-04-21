@@ -819,7 +819,7 @@ async def block_p_m(event):
     )
 
 
-@jmthon.ar_cmd(pattern="الخاص بلوك(?:\s|$)([\s\S]*)", command=("الخاص حظر", "utils"))
+@jmthon.ar_cmd(pattern="الخاص بلوك(?:\s|$)([\s\S]*)")
 async def block_p_m(event):
     if gvarstatus("pmpermit") is None:
         return await edit_or_reply(
