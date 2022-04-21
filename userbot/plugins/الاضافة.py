@@ -1,42 +1,21 @@
-from telethon import functions
-from telethon.tl import functions
-from telethon.tl.functions.channels import InviteToChannelRequest
-
-from userbot import jmthon
-
-from ..core.managers import edit_delete, edit_or_reply
 import asyncio
 import csv
 import random
-from datetime import datetime
-from math import sqrt
 
-from emoji import emojize
 from telethon import functions
-from telethon.errors import (
-    ChannelInvalidError,
-    ChannelPrivateError,
-    ChannelPublicGroupNaError,
-)
 from telethon.errors.rpcerrorlist import (
     UserAlreadyParticipantError,
     UserNotMutualContactError,
     UserPrivacyRestrictedError,
 )
-from telethon.tl.functions.channels import (
-    GetFullChannelRequest,
-    GetParticipantsRequest,
-    InviteToChannelRequest,
-)
-from telethon.tl.functions.messages import GetFullChatRequest, GetHistoryRequest
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantsAdmins,
-    ChannelParticipantsBots,
-    InputPeerUser,
-    MessageActionChannelMigrateFrom,
-)
-from telethon.utils import get_input_location
+from telethon.tl import functions
+from telethon.tl.functions.channels import InviteToChannelRequest
+from telethon.tl.types import InputPeerUser
+
+from userbot import jmthon
+
+from ..core.managers import edit_delete, edit_or_reply
+
 
 @jmthon.ar_cmd(pattern="انضمام ([\s\S]*)")
 async def lol(event):
@@ -78,17 +57,16 @@ async def _(event):
     await edit_or_reply(event, f"**{to_add_users} تم اضافته بنجاح ✓**")
 
 
-@jmthon.ar_cmd(
-    pattern="ضيف ([\s\S]*)", 
-    groups_only=True
-    )
+@jmthon.ar_cmd(pattern="ضيف ([\s\S]*)", groups_only=True)
 async def get_users(event):
     legen_ = event.text[10:]
     jmthon_chat = legen_.lower
     restricted = ["@super_jmthon", "@jmthon_support"]
     JMTHON = await edit_or_reply(event, f"**جارِ اضأفه الاعضاء من  ** {legen_}")
     if jmthon_chat in restricted:
-        return await JMTHON.edit(event, "**- لا يمكنك اخذ الاعضاء من مجموعه السورس العب بعيد ابني  :)**")
+        return await JMTHON.edit(
+            event, "**- لا يمكنك اخذ الاعضاء من مجموعه السورس العب بعيد ابني  :)**"
+        )
     sender = await event.get_sender()
     me = await event.client.get_me()
     if not sender.id == me.id:
@@ -122,6 +100,7 @@ async def get_users(event):
     return await JMTHON.edit(
         f"**▾∮اڪتملت الأضافة ✅** \n\n• تم بنجاح اضافة `{s}` \n• خطأ بأضافة `{f}`"
     )
+
 
 @jmthon.ar_cmd(pattern="تجميع الاعضاء$")
 async def scrapmem(event):
