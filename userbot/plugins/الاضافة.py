@@ -107,7 +107,6 @@ async def scrapmem(event):
     chat = event.chat_id
     xx = await edit_or_reply(event, "**⌔∮ تتم العملية انتظر قليلا  𓆰.**")
     members = await event.client.get_participants(chat, aggressive=True)
-
     with open("members.csv", "w", encoding="UTF-8") as f:
         writer = csv.writer(f, delimiter=",", lineterminator="\n")
         writer.writerow(["user_id", "hash"])
