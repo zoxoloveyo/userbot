@@ -21,6 +21,7 @@ from telethon.errors import (
 )
 
 from ..Config import Config
+from userbot.core.session import jmthon, JMTHON2
 from ..helpers.utils.events import checking
 from ..helpers.utils.format import paste_message
 from ..helpers.utils.utils import runcmd
@@ -242,9 +243,14 @@ class JmthonUserBotClient(TelegramClient):
                     LOADED_CMDS[file_test].append(func)
                 except BaseException:
                     LOADED_CMDS.update({file_test: [func]})
-                if edited:
-                    jmthon.add_event_handler(func, events.MessageEdited(**kwargs))
+        if jmthon:
+             if edited:
+                jmthon.add_event_handler(func, events.MessageEdited(**kwargs))
                 jmthon.add_event_handler(func, events.NewMessage(**kwargs))
+        if JMTHON2:
+             if edited:
+                JMTHON2.add_event_handler(func, events.MessageEdited(**kwargs))
+                JMTHON2.add_event_handler(func, events.NewMessage(**kwargs))
             return wrapper
 
         return decorator
