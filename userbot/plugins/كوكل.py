@@ -10,8 +10,7 @@ from ..helpers.google_image_download import googleimagesdownload
 from ..helpers.utils import reply_id
 
 
-@jmthon.ar_cmd(
-    pattern="صور(?: |$)(\d*)? ?([\s\S]*)")
+@jmthon.ar_cmd(pattern="صور(?: |$)(\d*)? ?([\s\S]*)")
 async def img_sampler(event):
     reply_to_id = await reply_id(event)
     if event.is_reply and not event.pattern_match.group(2):
