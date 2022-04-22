@@ -1,21 +1,20 @@
-import random
-import asyncio
-import bs4
-import requests
-from ..core.managers import edit_or_reply
-from . import jmthon 
-from ..helpers.utils import reply_id
-from telethon.errors.rpcerrorlist import YouBlockedUserError
 import os
 import random
 
 from PIL import Image, ImageDraw, ImageFont
+from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
-from . import mention
+
 from userbot import jmthon
+
+from ..core.managers import edit_or_reply
+from ..helpers.utils import reply_id
+from . import jmthon, mention
+
 chr = Config.COMMAND_HAND_LER
 
 PICS_STR = []
+
 
 @jmthon.ar_cmd(pattern="اتمنى ?(.*)")
 async def roz(jasem):
@@ -32,9 +31,8 @@ async def roz(jasem):
             reslt = f"₰ تم ارسال امنيتك\
                  \n\n₰ نسبه نجاحها : {success}%"
     await edit_or_reply(jasem, reslt)
-    
-    
-       
+
+
 @jmthon.ar_cmd(pattern="حالتي$")
 async def _(event):
     text = "/start"
@@ -51,10 +49,6 @@ async def _(event):
             await event.delete()
         except YouBlockedUserError:
             await event.edit("**⌔∮ يجب عليك الغاء حظر بوت @SpamBot وحاول مره اخرى**")
-            
-            
-            
-           
 
 
 @jmthon.ar_cmd(pattern="شعار ?(.*)")
@@ -124,10 +118,3 @@ async def get_font_file(client, channel_id):
     )
     font_file_message = random.choice(font_file_message_s)
     return await client.download_media(font_file_message)
-    
-         
-              
-                   
-                        
-                                                        
-                                                                                 
