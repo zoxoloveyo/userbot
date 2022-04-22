@@ -7,6 +7,7 @@ from ..core.managers import edit_delete, edit_or_reply
 
 LOGS = logging.getLogger(__name__)
 
+
 @jmthon.ar_cmd(pattern="الايدي(?:\s|$)([\s\S]*)")
 async def _(roze):
     input_str = roze.pattern_match.group(2)
