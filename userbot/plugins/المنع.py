@@ -59,7 +59,8 @@ async def _(event):
         for trigger in to_unblacklist
     )
     await edit_or_reply(
-        event, f"**▾∮ تم الغاء منع** `{successful} / {len(to_unblacklist)}` **من قائمة المنع ◙**",
+        event,
+        f"**▾∮ تم الغاء منع** `{successful} / {len(to_unblacklist)}` **من قائمة المنع ◙**",
     )
 
 
