@@ -8,11 +8,11 @@ from ..helpers.utils import reply_id
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 import os
 import random
-from userbot import jmthon
 
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
 from . import mention
+from userbot import jmthon
 chr = Config.COMMAND_HAND_LER
 
 PICS_STR = []
@@ -22,7 +22,7 @@ async def roz(jasem):
     MHD = jasem.pattern_match.group(1)
     success = random.randint(0, 100)
     if MHD:
-        reslt = f"""₰ تم ارسال امنيتك \n\n\n️ امنيتك هي ⪼ **`{MHD}`** 
+        reslt = f"""₰ تم ارسال امنيتك \n\n\n️ امنيتك هي: **`{MHD}`** 
               \n\n₰ نسبه نجاحها : **{success}%**"""
     else:
         if jasem.is_reply:
@@ -34,27 +34,7 @@ async def roz(jasem):
     await edit_or_reply(jasem, reslt)
     
     
-
-@jmthon.ar_cmd(pattern="تنازلي(?:\s|$)([\s\S]*)")
-async def _(jasem):
-        roze = jasem.pattern_match.group(1)
-        if not roze:
-            await edit_delete(jasem, f"**الاستخدام:** `{chr}تنازلي <الوقت>`", 10)
-            return
-        t = int(roze)
-        pluto = await edit_or_reply(jasem, f"**⌔∮ بدء العداد لـ {roze} من الثواني**")
-        while t >= 0:
-            mins, secs = divmod(t, 60)
-            timer = "{:02d}:{:02d}".format(mins, secs)
-            await pluto.edit(str(timer))
-            await asyncio.sleep(1)
-            t -= 1
-        await jasem.reply(f"**⌔∮ العد التنازلي لـ {roze} من الثواني اكتمل**")
-    except Exception as e:
-        await edit_delete(jasem, f"`{e}`", 7)
-        
-        
-
+       
 @jmthon.ar_cmd(pattern="حالتي$")
 async def _(event):
     text = "/start"
@@ -147,7 +127,7 @@ async def get_font_file(client, channel_id):
     
          
               
-            
+                   
                         
                                                         
                                                                                  
