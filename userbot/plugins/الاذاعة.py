@@ -1,5 +1,4 @@
 from userbot import jmthon
-from ..helpers.utils import reply_id
 
 GCAST_BLACKLIST = [
     -1001118102804,
@@ -27,9 +26,9 @@ async def xd(event):
                     done += 1
             except:
                 lol += 1
-                pass
     await event.reply(f"⪼ تم بنجاح في {done} من الدردشات ، خطأ في  {lol} من الدردشات")
-    
+
+
 @jmthon.ar_cmd(pattern="للكروبات(?: |$)(.*)")
 async def gcast(event):
     jmthon = event.pattern_match.group(1)
