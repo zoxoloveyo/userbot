@@ -5,7 +5,7 @@ import requests
 
 from userbot import jmthon
 
-from jmthon.strings. import get_download_url
+from jmthon.strings import get_download_url
 
 @jmthon.ar_cmd(pattern="بينترست?(.*)")
 async def _(event):
