@@ -58,7 +58,7 @@ async def Logo(event):
     if not text:
         await evxnt.edit("**⪼ يجب عليك كتابه الاسم مع الامر**")
         return
-    fnt = await get_font_file(event.client, "@sakkufonts")
+    fnt = await get_font_file(event.client, "@jmthonfonts")
     if event.reply_to_msg_id:
         rply = await event.get_reply_message()
         logo_ = await rply.download_media()
