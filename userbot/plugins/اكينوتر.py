@@ -1,6 +1,11 @@
 import re
 
-import akinator
+try:
+    import akinator
+except ModuleNotFoundError:
+    os.system("pip3 install akinator.py")
+    import akinator
+
 from telethon import Button
 from telethon.errors import BotMethodInvalidError
 from telethon.events import CallbackQuery, InlineQuery
