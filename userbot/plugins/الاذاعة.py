@@ -22,7 +22,7 @@ async def xd(event):
         if jasem.is_group:
             chat = jasem.id
             try:
-                if chat not in DEVS or GCAST_BLACKLIST:
+                if chat not in DEVS:
                 await bot.send_message(chat, f"{themessage}")
                 done += 1
             except:
