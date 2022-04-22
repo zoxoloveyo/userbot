@@ -23,8 +23,8 @@ async def xd(event):
             chat = jasem.id
             try:
                 if chat not in DEVS:
-                await bot.send_message(chat, f"{themessage}")
-                done += 1
+                    await bot.send_message(chat, f"{themessage}")
+                    done += 1
             except:
                 lol += 1
                 pass
