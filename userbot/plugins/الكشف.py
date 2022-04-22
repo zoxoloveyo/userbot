@@ -85,7 +85,9 @@ async def _(event):
     replied_user, error_i_a = await get_user_from_event(event)
     if not replied_user:
         return
-    rozevent = await edit_or_reply(event, "⌔∮ جار إحضار معلومات المستخدم اننظر قليلا ⚒️")
+    rozevent = await edit_or_reply(
+        event, "⌔∮ جار إحضار معلومات المستخدم اننظر قليلا ⚒️"
+    )
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
     user_id = replied_user.user.id
     # some people have weird HTML in their names
@@ -172,6 +174,7 @@ async def who(event):
         await roz.delete()
     except TypeError:
         await roz.edit(caption, parse_mode="html")
+
 
 @jmthon.ar_cmd(pattern="رابط الحساب(?:\s|$)([\s\S]*)")
 async def permalink(mention):
