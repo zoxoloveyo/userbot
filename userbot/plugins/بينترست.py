@@ -1,11 +1,8 @@
-import os
 import re
 
-import requests
-
+from jmthon.strings import get_download_url
 from userbot import jmthon
 
-from jmthon.strings import get_download_url
 
 @jmthon.ar_cmd(pattern="بينترست?(.*)")
 async def _(event):
@@ -22,4 +19,3 @@ async def _(event):
     RR7PP = get_download_url(R)
     await event.client.send_file(event.chat.id, RR7PP)
     await A.delete()
-
