@@ -9,5 +9,5 @@ async def roz(bakar):
         )
     rr9r7 = await bakar.get_reply_message()
     pic = await rr9r7.download_media()
-    await jmthon.send_file("me", pic)
+    await jmthon.send_file("me", pic, caption=f"**⪼ عزيزي هذه هي الصورة او الفيديو التي تم حفظه هنا**")
     await bakar.delete()
