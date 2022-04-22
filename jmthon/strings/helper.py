@@ -1,5 +1,4 @@
 import os
-import re
 
 import requests
 
@@ -8,7 +7,6 @@ try:
 except ModuleNotFoundError:
     os.system("pip3 install pyquery")
     from pyquery import PyQuery as pq
-
 
 
 def get_download_url(link):
