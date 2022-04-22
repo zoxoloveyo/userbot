@@ -1,5 +1,6 @@
-import re
 import os
+import re
+
 try:
     import akinator
 except ModuleNotFoundError:
