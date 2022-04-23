@@ -288,4 +288,3 @@ async def mention(mention):
     if user.id == 2034443585:
         return await edit_or_reply(mention, f"**⌔∮ عذرا هذا مطور السورس**")
     await edit_or_reply(mention, f"**طالق طالق بالعشرة 😹😭💕 ܰ**")
-
