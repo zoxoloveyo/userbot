@@ -71,7 +71,7 @@ async def load_ins(folder):
                     check = 0
                     while flag:
                         try:
-                            load_module(
+                            start_anim(
                                 shortname.replace(".py", ""),
                                 plugin_path=f"userbot/plugins/{folder}",
                             )
