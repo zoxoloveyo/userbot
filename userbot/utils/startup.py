@@ -86,7 +86,7 @@ async def load_ins(folder):
             except Exception as e:
                 os.remove(Path(f"userbot/plugins/{folder}/{shortname}.py"))
                 LOGS.info(f" لا يمكنني تحميل {shortname} بسبب ؛ {e}")
-        
+
 
 async def startupmessage():
     """
