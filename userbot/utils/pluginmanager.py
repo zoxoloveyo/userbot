@@ -90,6 +90,7 @@ def start_anim(shortname):
         sys.modules["الترفيه" + shortname] = mod
         print("تم تثبيت" + shortname)
 
+
 def remove_plugin(shortname):
     try:
         cmd = []
