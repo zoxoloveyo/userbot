@@ -57,6 +57,37 @@ async def setup_bot():
         sys.exit()
 
 
+async def load_ins(folder):
+    path = f"userbot/plugins/{folder}/*.py"
+    files = glob.glob(path)
+    files.sort()
+    for name in files:
+        with open(name) as f:
+            path1 = Path(f.name)
+            shortname = path1.stem
+            try:
+                if shortname.replace(".py", "") not in Config.NO_LOAD:
+                    flag = True
+                    check = 0
+                    while flag:
+                        try:
+                            load_module(
+                                shortname.replace(".py", ""),
+                                plugin_path=f"userbot/plugins/{folder}",
+                            )
+                            break
+                        except ModuleNotFoundError as e:
+                            install_pip(e.name)
+                            check += 1
+                            if check > 5:
+                                break
+                else:
+                    os.remove(Path(f"userbot/plugins/{folder}/{shortname}.py"))
+            except Exception as e:
+                os.remove(Path(f"userbot/plugins/{folder}/{shortname}.py"))
+                LOGS.info(f" لا يمكنني تحميل {shortname} بسبب ؛ {e}")
+        
+
 async def startupmessage():
     """
     Start up message in telegram logger group
