@@ -61,6 +61,35 @@ def load_module(shortname, plugin_path=None):
         LOGS.info("تم بنجاح تثبيت ملف " + shortname)
 
 
+def start_anim(shortname):
+    if shortname.startswith("__"):
+        pass
+    elif shortname.endswith("_"):
+        import importlib
+        import sys
+        from pathlib import Path
+
+        path = Path(f"userbot/plugins/الترفيه/{shortname}.py")
+        name = "userbot.plugins.الترفيه.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        print("بدء تثبيت الترفيه.")
+        print("يتم تثبيت " + shortname)
+    else:
+        import importlib
+        import sys
+        from pathlib import Path
+
+        path = Path(f"userbot/plugins/الترفيه/{shortname}.py")
+        name = "userbot.plugins.الترفيه.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        mod.tgbot = legend.tgbot
+        spec.loader.exec_module(mod)
+        sys.modules["الترفيه" + shortname] = mod
+        print("تم تثبيت" + shortname)
+
 def remove_plugin(shortname):
     try:
         cmd = []
