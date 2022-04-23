@@ -11,9 +11,9 @@ import random
 
 from jmthon.strings import *
 from userbot import jmthon
-
-from ...core.managers import edit_or_reply
-from ...helpers import get_user_from_event
+from . import *
+from userbot.core.managers import edit_or_reply
+from userbot.helpers import get_user_from_event
 
 
 @jmthon.ar_cmd(pattern="رفع بكلبي(?: |$)(.*)")
