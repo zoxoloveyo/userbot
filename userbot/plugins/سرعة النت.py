@@ -1,4 +1,3 @@
-
 from time import time
 
 import speedtest
@@ -10,7 +9,7 @@ from ..helpers.utils import reply_id
 
 
 def convert_from_bytes(size):
-    power = 2 ** 10
+    power = 2**10
     n = 0
     units = {0: "", 1: "Kbps", 2: "Mbps", 3: "Gbps", 4: "Tbps"}
     while size > power:
@@ -30,9 +29,7 @@ async def _(event):
         as_document = True
     elif input_str == "نص":
         as_text = True
-    jmthonevent = await edit_or_reply(
-        event, "⌔∮ حساب سرعة الإنترنت انتظر قليلا !"
-    )
+    jmthonevent = await edit_or_reply(event, "⌔∮ حساب سرعة الإنترنت انتظر قليلا !")
     start = time()
     s = speedtest.Speedtest()
     s.get_best_server()
