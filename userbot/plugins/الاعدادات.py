@@ -83,7 +83,7 @@ async def _(event):
     await event.edit("**⪼ اهلا الان اشتغل بشكل طبيعي**")
 
 
-@jmthon.ar_cmd(pattern="التحديثات (تشغيل|ايقاف)$")
+@jmthon.ar_cmd(pattern="الاشعارات (تشغيل|ايقاف)$")
 async def set_pmlog(event):
     input_str = event.pattern_match.group(1)
     if input_str == "ايقاف":
