@@ -1,8 +1,7 @@
 import asyncio
 from collections import deque
 
-from . import ALIVE_NAME, edit_or_reply, jmthon
-
+from . import edit_or_reply, jmthon
 
 
 @jmthon.ar_cmd(pattern="غبي$")
