@@ -302,7 +302,7 @@ async def variable(event):
     Syria = "Asia/Damascus"
     heroku_var = app.config()
     await edit_or_reply(event, "⌔∮ يتم جلب معلومات هذا الفار")
-    if exe == "وقت العراق" or input_str == "وقت عراق":
+    if exe == "وقت العراق" or exe == "وقت عراق":
         variable = "TZ"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
