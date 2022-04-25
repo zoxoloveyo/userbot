@@ -41,7 +41,7 @@ async def variable(var):
             var, "**⌔∮ يجب عليك الرد على النص او الرابط حسب الفار الذي تضيفه **"
         )
     exe = var.pattern_match.group(1)
-    jmthon = await edit_or_reply(var, "**⌔∮ جارِ وضع الفار انتظر قليلا**")
+    await edit_or_reply(var, "**⌔∮ جارِ وضع الفار انتظر قليلا**")
     heroku_var = app.config()
     if exe == "توقيت":
         variable = "TZ"
@@ -169,7 +169,7 @@ async def variable(event):
         )
     exe = event.text[5:]
     heroku_var = app.config()
-    jmthon = await edit_or_reply(event, "**⌔∮ جارِ حذف الفار انتظر قليلا**")
+    await edit_or_reply(event, "**⌔∮ جارِ حذف الفار انتظر قليلا**")
     if exe == "رمز الاسم":
         variable = "TIME_JM"
         await asyncio.sleep(1)
@@ -265,7 +265,7 @@ async def variable(event):
     yman = "Asia/Aden"
     Syria = "Asia/Damascus"
     heroku_var = app.config()
-    jmthon = await edit_or_reply(var, "⌔∮ يتم جلب معلومات هذا الفار")
+    await edit_or_reply(var, "⌔∮ يتم جلب معلومات هذا الفار")
     if exe == "وقت العراق" or input_str == "وقت عراق":
         variable = "TZ"
         await asyncio.sleep(1.5)
