@@ -190,7 +190,7 @@ async def variable(event):
         	return await jmthon.edit("**⌔∮ لم تتم اضافه فار رمز الاسم بالاصل.**")
         await jmthon.edit("**⌔∮ تم بنجاح حذف فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
         del heroku_var[variable]
-    lif exe == "البايو" or exe == "النبذة": 
+    if exe == "البايو" or exe == "النبذة": 
         variable = "DEFAULT_BIO"
         await asyncio.sleep(1)
         if variable not in heroku_var:
