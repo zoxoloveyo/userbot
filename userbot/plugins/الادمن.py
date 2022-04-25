@@ -1,18 +1,15 @@
 import asyncio
 
+from telethon.errors import BadRequestError
 from telethon.errors import ChatAdminRequiredError as no_admin
-from telethon.tl.functions.messages import ExportChatInviteRequest
-from telethon.errors import (
-    BadRequestError,
-    ImageProcessFailedError,
-    PhotoCropSizeSmallError,
-)
+from telethon.errors import ImageProcessFailedError, PhotoCropSizeSmallError
 from telethon.errors.rpcerrorlist import UserIdInvalidError
 from telethon.tl.functions.channels import (
     EditAdminRequest,
     EditBannedRequest,
     EditPhotoRequest,
 )
+from telethon.tl.functions.messages import ExportChatInviteRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import (
     ChatAdminRights,
@@ -95,7 +92,6 @@ from telethon.tl.types import ChannelParticipantsAdmins as admin
 from telethon.tl.types import ChannelParticipantsKicked as banned
 
 
-
 @jmthon.ar_cmd(pattern="الرابط$")
 async def _(event):
     ko = await edit_or_reply(event, "**يتم جلب الرابط انتظر **")
@@ -106,6 +102,7 @@ async def _(event):
     except no_admin:
         return await edit_or_reply(ko, "عذرا انت لست مشرف في هذه الدردشة", time=10)
     await edit_or_reply(ko, f"- رابط الدردشة\n {r.link}")
+
 
 @jmthon.ar_cmd(
     pattern="تنزيل الكل$",
