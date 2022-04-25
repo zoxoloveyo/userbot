@@ -38,7 +38,7 @@ async def variable(var):
         vra = rep.text
     if vra is None:
         return await edit_delete(
-            event, "**⌔∮ يجب عليك الرد على النص او الرابط حسب الفار الذي تضيفه **"
+            var, "**⌔∮ يجب عليك الرد على النص او الرابط حسب الفار الذي تضيفه **"
         )
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
