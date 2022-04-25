@@ -7,7 +7,6 @@
 
 import asyncio
 import math
-import os
 
 import heroku3
 import requests
@@ -52,66 +51,98 @@ async def variable(var):
         variable = "TIME_JM"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار رمز الاسم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار رمز الاسم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         else:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار رمز الاسم \n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار رمز الاسم \n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         heroku_var[variable] = vra
-    if exe == "البايو" or exe == "النبذة": 
+    if exe == "البايو" or exe == "النبذة":
         variable = "DEFAULT_BIO"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         else:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         heroku_var[variable] = vra
-    if exe == "الصورة" or exe == "الصوره": 
+    if exe == "الصورة" or exe == "الصوره":
         variable = "DIGITAL_PIC"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         else:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         heroku_var[variable] = vra
-    if exe == "زخرفة الارقام" or exe == "زخرفه الارقام": 
+    if exe == "زخرفة الارقام" or exe == "زخرفه الارقام":
         variable = "TI_FN"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         else:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         heroku_var[variable] = vra
     if exe == "اسم" or exe == "الاسم":
         variable = "ALIVE_NAME"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار اسم المستخدم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار اسم المستخدم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         else:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار اسم المستخدم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
-        heroku_var[variable] = vra        
-    if exe == "صورة الادمن" or exe == "صوره الادمن": 
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار اسم المستخدم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
+        heroku_var[variable] = vra
+    if exe == "صورة الادمن" or exe == "صوره الادمن":
         variable = "ADJM_PIC"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار صورة الادمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار صورة الادمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         else:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار صورة الادمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار صورة الادمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         heroku_var[variable] = vra
     if exe == "كروب التخزين":
         variable = "PM_LOGGER_GROUP_ID"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار كروب التخزين\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار كروب التخزين\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         else:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار كروب التخزين\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار كروب التخزين\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         heroku_var[variable] = vra
     if exe == "كروب الحفظ":
         variable = "PRIVATE_GROUP_BOT_API_ID"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
         else:
-            await jmthon.edit("**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
-        heroku_var[variable] = vra        
+            await jmthon.edit(
+                "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+            )
+        heroku_var[variable] = vra
 
 
 @jmthon.ar_cmd(pattern="ازالة (.*)")
@@ -135,63 +166,77 @@ async def variable(event):
         variable = "TIME_JM"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-        	return await jmthon.edit("**⌔∮ لم تتم اضافه فار رمز الاسم بالاصل.**")
-        await jmthon.edit("**⌔∮ تم بنجاح حذف فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            return await jmthon.edit("**⌔∮ لم تتم اضافه فار رمز الاسم بالاصل.**")
+        await jmthon.edit(
+            "**⌔∮ تم بنجاح حذف فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+        )
         del heroku_var[variable]
-    if exe == "البايو" or exe == "النبذة": 
+    if exe == "البايو" or exe == "النبذة":
         variable = "DEFAULT_BIO"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-        	return await jmthon.edit("**⌔∮ لم تتم اضافه فار البايو بالاصل.**") 
-        await jmthon.edit("**⌔∮ تم بنجاح حذف فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
+            return await jmthon.edit("**⌔∮ لم تتم اضافه فار البايو بالاصل.**")
+        await jmthon.edit(
+            "**⌔∮ تم بنجاح حذف فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+        )
         del heroku_var[variable]
 
-
-    if exe == "الصورة" or exe == "الصوره": 
+    if exe == "الصورة" or exe == "الصوره":
         variable = "DIGITAL_PIC"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-        	return await jmthon.edit("**⌔∮ لم تتم اضافه فار الصورة بالاصل.**") 
-        await jmthon.edit("**⌔∮ تم بنجاح حذف فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
-        del heroku_var[variable]        
-    if exe == "صورة الادمن" or exe == "صوره الادمن": 
+            return await jmthon.edit("**⌔∮ لم تتم اضافه فار الصورة بالاصل.**")
+        await jmthon.edit(
+            "**⌔∮ تم بنجاح حذف فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+        )
+        del heroku_var[variable]
+    if exe == "صورة الادمن" or exe == "صوره الادمن":
         variable = "ADJM_PIC"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-        	return await jmthon.edit("**⌔∮ لم تتم اضافه فار صورة الادمن بالاصل.**") 
-        await jmthon.edit("**⌔∮ تم بنجاح حذف فار صورة الادمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
-        del heroku_var[variable]            
+            return await jmthon.edit("**⌔∮ لم تتم اضافه فار صورة الادمن بالاصل.**")
+        await jmthon.edit(
+            "**⌔∮ تم بنجاح حذف فار صورة الادمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+        )
+        del heroku_var[variable]
     if exe == "اسم" or exe == "الاسم":
         variable = "ALIVE_NAME"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-        	return await jmthon.edit("**⌔∮ لم تتم اضافه فار الاسم بالاصل.**") 
-        await jmthon.edit("**⌔∮ تم بنجاح حذف فار الاسم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
-        del heroku_var[variable]   
+            return await jmthon.edit("**⌔∮ لم تتم اضافه فار الاسم بالاصل.**")
+        await jmthon.edit(
+            "**⌔∮ تم بنجاح حذف فار الاسم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+        )
+        del heroku_var[variable]
     if exe == "زخرفة الارقام" or exe == "زخرفه الارقام":
         variable = "TI_FN"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-        	return await jmthon.edit("**⌔∮ لم تتم اضافه فار زخرفه الارقام بالاصل.**") 
-        await jmthon.edit("**⌔∮ تم بنجاح حذف فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
-        del heroku_var[variable]             
+            return await jmthon.edit("**⌔∮ لم تتم اضافه فار زخرفه الارقام بالاصل.**")
+        await jmthon.edit(
+            "**⌔∮ تم بنجاح حذف فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+        )
+        del heroku_var[variable]
     if exe == "كروب التخزين":
         variable = "PM_LOGGER_GROUP_ID"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-        	return await jmthon.edit("**⌔∮ لم تتم اضافه فار كروب التخزين بالاصل.**") 
-        await jmthon.edit("**⌔∮ تم بنجاح حذف فار كروب التخزين\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
-        del heroku_var[variable]        
+            return await jmthon.edit("**⌔∮ لم تتم اضافه فار كروب التخزين بالاصل.**")
+        await jmthon.edit(
+            "**⌔∮ تم بنجاح حذف فار كروب التخزين\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+        )
+        del heroku_var[variable]
     if exe == "كروب الحفظ":
         variable = "PRIVATE_GROUP_BOT_API_ID"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-        	return await jmthon.edit("**⌔∮ لم تتم اضافه فار كروب الحفظ بالاصل.**") 
-        await jmthon.edit("**⌔∮ تم بنجاح حذف فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**")
-        del heroku_var[variable]     
-        
-    
-        
+            return await jmthon.edit("**⌔∮ لم تتم اضافه فار كروب الحفظ بالاصل.**")
+        await jmthon.edit(
+            "**⌔∮ تم بنجاح حذف فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
+        )
+        del heroku_var[variable]
+
+
 @jmthon.ar_cmd(pattern="استخدامي$")
 async def dyno_usage(dyno):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
@@ -214,9 +259,7 @@ async def dyno_usage(dyno):
     path = "/accounts/" + user_id + "/actions/get-quota"
     r = requests.get(heroku_api + path, headers=headers)
     if r.status_code != 200:
-        return await dyno.edit(
-            "**خطا: يوجد شي غير صحيح حدث**\n\n" f">.`{r.reason}`\n"
-        )
+        return await dyno.edit("**خطا: يوجد شي غير صحيح حدث**\n\n" f">.`{r.reason}`\n")
     result = r.json()
     quota = result["account_quota"]
     quota_used = result["quota_used"]
