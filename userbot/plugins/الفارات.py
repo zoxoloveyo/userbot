@@ -33,6 +33,7 @@ async def variable(var):
             "عزيزي المستخدم يجب ان تعين معلومات الفارات التالية لاستخدام اوامر الفارات\n `HEROKU_API_KEY`\n `HEROKU_APP_NAME`.",
         )
     rep = await var.get_reply_message()
+    text = None
     if rep:
         vra = rep.text
     if vra is None:
