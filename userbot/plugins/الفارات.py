@@ -33,11 +33,12 @@ async def variable(var):
             "عزيزي المستخدم يجب ان تعين معلومات الفارات التالية لاستخدام اوامر الفارات\n `HEROKU_API_KEY`\n `HEROKU_APP_NAME`.",
         )
     rep = await var.get_reply_message()
-    text = None
     if reply:
         vra = rep.text
     if vra is None:
-        return await edit_delete(event, "**⌔∮ يجب عليك الرد على النص او الرابط حسب الفار الذي تضيفه **")
+        return await edit_delete(
+            event, "**⌔∮ يجب عليك الرد على النص او الرابط حسب الفار الذي تضيفه **"
+        )
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "توقيت":
