@@ -41,17 +41,17 @@ async def variable(var):
             var, "**⌔∮ يجب عليك الرد على النص او الرابط حسب الفار الذي تضيفه **"
         )
     exe = var.pattern_match.group(1)
-    await edit_or_reply(var, "**⌔∮ جارِ وضع الفار انتظر قليلا**")
+    jmthon = await edit_or_reply(var, "**⌔∮ جارِ وضع الفار انتظر قليلا**")
     heroku_var = app.config()
     if exe == "توقيت":
         variable = "TZ"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير الوقت الخاص بك\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير الوقت الخاص بك\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = vra
@@ -59,11 +59,11 @@ async def variable(var):
         variable = "TIME_JM"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار رمز الاسم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار رمز الاسم \n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = vra
@@ -71,11 +71,11 @@ async def variable(var):
         variable = "DEFAULT_BIO"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = vra
@@ -83,11 +83,11 @@ async def variable(var):
         variable = "DIGITAL_PIC"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = vra
@@ -95,11 +95,11 @@ async def variable(var):
         variable = "TI_FN"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = vra
@@ -107,11 +107,11 @@ async def variable(var):
         variable = "ALIVE_NAME"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار اسم المستخدم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار اسم المستخدم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = vra
@@ -119,11 +119,11 @@ async def variable(var):
         variable = "ADJM_PIC"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار صورة الادمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار صورة الادمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = vra
@@ -131,11 +131,11 @@ async def variable(var):
         variable = "PM_LOGGER_GROUP_ID"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار كروب التخزين\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار كروب التخزين\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = vra
@@ -143,11 +143,11 @@ async def variable(var):
         variable = "PRIVATE_GROUP_BOT_API_ID"
         await asyncio.sleep(1)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(var,
                 "**⌔∮ تم بنجاح تغيير فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = vra
@@ -169,13 +169,13 @@ async def variable(event):
         )
     exe = event.text[5:]
     heroku_var = app.config()
-    await edit_or_reply(event, "**⌔∮ جارِ حذف الفار انتظر قليلا**")
+    jmthon = await edit_or_reply(event, "**⌔∮ جارِ حذف الفار انتظر قليلا**")
     if exe == "رمز الاسم":
         variable = "TIME_JM"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-            return await edit_or_reply("**⌔∮ لم تتم اضافه فار رمز الاسم بالاصل.**")
-        await edit_or_reply(
+            return await edit_or_reply(event, "**⌔∮ لم تتم اضافه فار رمز الاسم بالاصل.**")
+        await edit_or_reply(event, 
             "**⌔∮ تم بنجاح حذف فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
         )
         del heroku_var[variable]
@@ -183,8 +183,8 @@ async def variable(event):
         variable = "DEFAULT_BIO"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-            return await edit_or_reply("**⌔∮ لم تتم اضافه فار البايو بالاصل.**")
-        await edit_or_reply(
+            return await edit_or_reply(event, "**⌔∮ لم تتم اضافه فار البايو بالاصل.**")
+        await edit_or_reply(event, 
             "**⌔∮ تم بنجاح حذف فار البايو\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
         )
         del heroku_var[variable]
@@ -192,8 +192,8 @@ async def variable(event):
         variable = "DIGITAL_PIC"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-            return await edit_or_reply("**⌔∮ لم تتم اضافه فار الصورة بالاصل.**")
-        await edit_or_reply(
+            return await edit_or_reply(event, "**⌔∮ لم تتم اضافه فار الصورة بالاصل.**")
+        await edit_or_reply(event, 
             "**⌔∮ تم بنجاح حذف فار الصورة\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
         )
         del heroku_var[variable]
@@ -201,8 +201,8 @@ async def variable(event):
         variable = "ADJM_PIC"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-            return await edit_or_reply("**⌔∮ لم تتم اضافه فار صورة الادمن بالاصل.**")
-        await edit_or_reply(
+            return await edit_or_reply(event, "**⌔∮ لم تتم اضافه فار صورة الادمن بالاصل.**")
+        await edit_or_reply(event, 
             "**⌔∮ تم بنجاح حذف فار صورة الادمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
         )
         del heroku_var[variable]
@@ -210,8 +210,8 @@ async def variable(event):
         variable = "ALIVE_NAME"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-            return await edit_or_reply("**⌔∮ لم تتم اضافه فار الاسم بالاصل.**")
-        await edit_or_reply(
+            return await edit_or_reply(event, "**⌔∮ لم تتم اضافه فار الاسم بالاصل.**")
+        await edit_or_reply(event, 
             "**⌔∮ تم بنجاح حذف فار الاسم\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
         )
         del heroku_var[variable]
@@ -219,8 +219,8 @@ async def variable(event):
         variable = "TI_FN"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-            return await edit_or_reply("**⌔∮ لم تتم اضافه فار زخرفه الارقام بالاصل.**")
-        await edit_or_reply(
+            return await edit_or_reply(event, "**⌔∮ لم تتم اضافه فار زخرفه الارقام بالاصل.**")
+        await edit_or_reply(event, 
             "**⌔∮ تم بنجاح حذف فار زخرفه الارقام\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
         )
         del heroku_var[variable]
@@ -228,8 +228,8 @@ async def variable(event):
         variable = "PM_LOGGER_GROUP_ID"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-            return await edit_or_reply("**⌔∮ لم تتم اضافه فار كروب التخزين بالاصل.**")
-        await edit_or_reply(
+            return await edit_or_reply(event, "**⌔∮ لم تتم اضافه فار كروب التخزين بالاصل.**")
+        await edit_or_reply(event, 
             "**⌔∮ تم بنجاح حذف فار كروب التخزين\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
         )
         del heroku_var[variable]
@@ -237,8 +237,8 @@ async def variable(event):
         variable = "PRIVATE_GROUP_BOT_API_ID"
         await asyncio.sleep(1)
         if variable not in heroku_var:
-            return await edit_or_reply("**⌔∮ لم تتم اضافه فار كروب الحفظ بالاصل.**")
-        await edit_or_reply(
+            return await edit_or_reply(event, "**⌔∮ لم تتم اضافه فار كروب الحفظ بالاصل.**")
+        await edit_or_reply(event, 
             "**⌔∮ تم بنجاح حذف فار كروب الحفظ\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
         )
         del heroku_var[variable]
@@ -265,16 +265,16 @@ async def variable(event):
     yman = "Asia/Aden"
     Syria = "Asia/Damascus"
     heroku_var = app.config()
-    await edit_or_reply(var, "⌔∮ يتم جلب معلومات هذا الفار")
+    jmthon = await edit_or_reply(event, "⌔∮ يتم جلب معلومات هذا الفار")
     if exe == "وقت العراق" or input_str == "وقت عراق":
         variable = "TZ"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى العراق\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى العراق\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = iraq
@@ -282,11 +282,11 @@ async def variable(event):
         variable = "TZ"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى السعودية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى السعودية\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = iraq
@@ -294,11 +294,11 @@ async def variable(event):
         variable = "TZ"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى مصر\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى مصر\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = cairo
@@ -306,11 +306,11 @@ async def variable(event):
         variable = "TZ"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى الاردن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى الاردن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = jordan
@@ -318,11 +318,11 @@ async def variable(event):
         variable = "TZ"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى اليمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى اليمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = yman
@@ -330,11 +330,11 @@ async def variable(event):
         variable = "TZ"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى اليمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         else:
-            await edit_or_reply(
+            await edit_or_reply(event, 
                 "**⌔∮ تم بنجاح تغيير الوقت الى اليمن\n\n❃ جار اعادة تشغيل السورس انتظر من 2-5 دقائق ليتشغل مره اخرى**"
             )
         heroku_var[variable] = Syria
