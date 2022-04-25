@@ -97,7 +97,7 @@ async def startupmessage():
             Config.JMTHONLOGO = await jmthon.tgbot.send_file(
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/698fccaf1d48ae9495aee.jpg",
-                caption="❃ عزيزي المستخدم تم تنصيب سورس جمثون لك بنجاح لمعرفه اوامر السورس؛ \n`.اوامر بوت النشر`\n`.اوامر الفارات`\n`.الاوامر`",
+                caption="❃ عزيزي المستخدم تم تنصيب سورس جمثون لك بنجاح لمعرفه اوامر السورس؛ \n`.الاوامر`",
                 buttons=[
                     (Button.url("مجموعة المساعده", "https://t.me/jmthon_support"),)
                 ],
