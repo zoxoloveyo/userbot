@@ -1,7 +1,8 @@
 from telethon import Button, events
 
-from ..Config import Config
 from userbot import jmthon
+
+from ..Config import Config
 
 ROZ_PIC = "https://telegra.ph/file/5f6ef13851dcf0d6fc72b.jpg"
 RAZAN = Config.TG_BOT_USERNAME
