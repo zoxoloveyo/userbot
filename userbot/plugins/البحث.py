@@ -1,4 +1,3 @@
-import asyncio
 import base64
 import io
 import os
@@ -6,16 +5,14 @@ from pathlib import Path
 
 from ShazamAPI import Shazam
 from telethon import types
-from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from validators.url import url
-
 
 from userbot import jmthon
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..helpers.functions import name_dl, song_dl, video_dl, yt_data, yt_search
+from ..helpers.functions import name_dl, song_dl, yt_data, yt_search
 from ..helpers.tools import media_type
 from ..helpers.utils import _jmthonutils, reply_id
 
@@ -106,15 +103,12 @@ async def delete_messages(event, chat, from_message):
     await event.client.send_read_acknowledge(chat)
 
 
-
 @jmthon.ar_cmd(pattern="اسم الاغنية$")
 async def shazamcmd(event):
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
     if not reply or not mediatype or mediatype not in ["Voice", "Audio"]:
-        return await edit_delete(
-            event, "⌔∮ يرجى الرد على مقطع صوتي او بصمه للبحث عنها"
-        )
+        return await edit_delete(event, "⌔∮ يرجى الرد على مقطع صوتي او بصمه للبحث عنها")
     jmthonevent = await edit_or_reply(event, "**⌔∮ يتم معالجه المقطع الصوتي  .**")
     try:
         for attr in getattr(reply.document, "attributes", []):
