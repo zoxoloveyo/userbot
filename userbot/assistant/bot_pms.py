@@ -12,7 +12,7 @@ from userbot import BOTLOG, BOTLOG_CHATID, Config, jmthon
 
 # from . import BOTLOG, BOTLOG_CHATID
 from userbot.assistant.botmanagers import ban_user_from_bot
-from .rz import *
+
 from ..Config import Config
 from ..core import check_owner, pool
 from ..core.inlinebot import *
@@ -29,6 +29,7 @@ from ..sql_helper.bot_pms_sql import (
 )
 from ..sql_helper.bot_starters import add_starter_to_db, get_starter_details
 from ..sql_helper.globals import delgvar, gvarstatus
+from .rz import *
 
 LOGS = logging.getLogger(__name__)
 
