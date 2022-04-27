@@ -14,6 +14,7 @@ async def roz(bakar):
     )
     await bakar.delete()
 
+
 @jmthon.ar_cmd(pattern="^هممم$")
 async def roz(bakar):
     if not bakar.is_reply:
