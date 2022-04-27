@@ -29,7 +29,6 @@ from ..sql_helper.bot_pms_sql import (
 )
 from ..sql_helper.bot_starters import add_starter_to_db, get_starter_details
 from ..sql_helper.globals import delgvar, gvarstatus
-from .rz import *
 
 LOGS = logging.getLogger(__name__)
 
@@ -129,7 +128,7 @@ async def bot_start(event):
                 Button.inline("• لوحة التحكم •", data="gibcmd"),
             ],
             [
-                Button.inline("• دخول عبر تيرمكس •", data="jm_hhack"),
+                Button.inline("• دخول عبر تيرمكس •", data="rz"),
             ],
         ]
     try:
