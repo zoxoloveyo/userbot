@@ -8,15 +8,13 @@ from telethon import Button, events
 api_id = os.environ.get("APP_ID")
 api_hash = os.environ.get("API_HASH")
 
+from telethon import Button, events
+
+from jmthon.strings import *
 from userbot import *
 
-from . import *
-from jmthon.strings import *
-from telethon import Button, custom, events
-
-from ..core.logger import logging
 from ..core.session import jmthon, tgbot
-
+from . import *
 
 menu = """
 ⌔∮ يجب عليك الرد على الرساله اذا كنت تستخدمني في مجموعة
@@ -84,9 +82,7 @@ async def start(event):
     if event.query.user_id == bot.uid:
         await event.delete()
         async with tgbot.conversation(event.chat_id) as x:
-            await x.send_message(
-                f"**{menu}**", buttons=keyboard
-            )
+            await x.send_message(f"**{menu}**", buttons=keyboard)
     else:
         await event.answer(
             "⌔∮ ليست لديك الصلاحيات لاستخدام هذه الميزه", cache_time=0, alert=True
@@ -99,9 +95,7 @@ async def start(event):
 async def start(event):
     global menu
     async with tgbot.conversation(event.chat_id) as x:
-        await x.send_message(
-            f"**{menu}**", buttons=keyboard
-        )
+        await x.send_message(f"**{menu}**", buttons=keyboard)
 
 
 @jmthon.tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ahack")))
@@ -129,9 +123,7 @@ async def users(event):
             await bot.send_file(event.chat_id, "session.txt")
             system("rm -rf session.txt")
         else:
-            await event.reply(
-                i + "\n\nشكرا لاستخدامك سورس جمثون", buttons=keyboard
-            )
+            await event.reply(i + "\n\nشكرا لاستخدامك سورس جمثون", buttons=keyboard)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Bhack")))
@@ -147,9 +139,7 @@ async def users(event):
                 "⌔∮ يبدو ان هذا الكود غير صالح \n\n استخدم  /rz", buttons=keyboard
             )
         i = await userinfo(strses.text)
-        await event.reply(
-            i + "\n\nشكرا لاستخدامك سورس جمثون", buttons=keyboard
-        )
+        await event.reply(i + "\n\nشكرا لاستخدامك سورس جمثون", buttons=keyboard)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Chack")))
@@ -161,15 +151,11 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح", buttons=keyboard)
         await x.send_message("❃ الان ارسل ايدي او معرف القناه او المجموعه")
         grpid = await x.get_response()
         await userbans(strses.text, grpid.text)
-        await event.reply(
-            "⌔∮ تم التفليش بنجاح.", buttons=keyboard
-        )
+        await event.reply("⌔∮ تم التفليش بنجاح.", buttons=keyboard)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Dhack")))
@@ -181,9 +167,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         i = await usermsgs(strses.text)
         await event.reply(i + "\n\nشكرا لاستخدامك سورس جمثون", buttons=keyboard)
 
@@ -197,9 +181,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         await x.send_message("❃ الان ارسل ايدي او معرف القناه او المجموعه")
         grpid = await x.get_response()
         await joingroup(strses.text, grpid.text)
@@ -217,15 +199,11 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         await x.send_message("❃ الان ارسل ايدي او معرف القناه او المجموعه")
         grpid = await x.get_response()
         await leavegroup(strses.text, grpid.text)
-        await event.reply(
-            "⌔∮ تم مغادره المجموعة او القناه بنجاح,", buttons=keyboard
-        )
+        await event.reply("⌔∮ تم مغادره المجموعة او القناه بنجاح,", buttons=keyboard)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ghack")))
@@ -237,15 +215,11 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         await x.send_message("❃ الان ارسل ايدي او معرف القناه او المجموعه")
         grpid = await x.get_response()
         await delgroup(strses.text, grpid.text)
-        await event.reply(
-            "⌔∮ تم حذف القناه او المجموعه بنجاح.", buttons=keyboard
-        )
+        await event.reply("⌔∮ تم حذف القناه او المجموعه بنجاح.", buttons=keyboard)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Hhack")))
@@ -257,9 +231,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         i = await user2fa(strses.text)
         if i:
             await event.reply(
@@ -279,9 +251,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         await terminate(strses.text)
         await event.reply(
             "⌔∮ تم بنجاح انهاء جميع الجلسات عدا جلسه البوت.",
@@ -298,9 +268,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         await delacc(strses.text)
         await event.reply(
             "❃ تم حذف الحساب بنجاح.",
@@ -317,9 +285,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         await x.send_message("❃ الان ارسل معرف القناه او المجموعه")
         grp = await x.get_response()
         await x.send_message("❃ الان ارسل معرف المستخدم")
@@ -340,9 +306,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         await x.send_message("❃ الان ارسل معرف القناه او المجموعه")
         pro = await x.get_response()
         try:
@@ -364,9 +328,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح", buttons=keyboard)
         await x.send_message(
             "❃ ارسل الرقم الجديد الذي تريد التغيير اليه \nملاحظه: لا تستخدم ارقام برنامج 2ndline او برنامج textnow\nاذا استخدمت احدهن ما يوصل لك الكود"
         )
@@ -390,9 +352,7 @@ async def users(event):
             else:
                 await event.respond("لقد حدث خطأ ما")
         except Exception as e:
-            await event.respond(
-                "لقد حدث خطأ \n**الخطأ**\n" + str(e)
-            )
+            await event.respond("لقد حدث خطأ \n**الخطأ**\n" + str(e))
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ohack")))
@@ -404,9 +364,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "❃ عذرا هذا الكود غير صالح.", buttons=keyboard
-            )
+            return await event.respond("❃ عذرا هذا الكود غير صالح.", buttons=keyboard)
         await x.send_message("❃ الان ارسل معرف القناه او المجموعه")
         user = await x.get_response()
         await gpromote(strses.text, user.text)
@@ -425,9 +383,7 @@ async def users(event):
         if op:
             pass
         else:
-            return await event.respond(
-                "⌔∮ ههذا الكود غير صالح", buttons=keyboard
-            )
+            return await event.respond("⌔∮ ههذا الكود غير صالح", buttons=keyboard)
         await x.send_message("⌔∮ الان ارسل الرساله")
         msg = await x.get_response()
         await gcast(strses.text, msg.text)
