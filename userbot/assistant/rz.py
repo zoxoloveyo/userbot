@@ -76,7 +76,7 @@ keyboard = [
 ]
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"jm_hhack")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rz")))
 async def start(event):
     global menu
     if event.query.user_id == bot.uid:
