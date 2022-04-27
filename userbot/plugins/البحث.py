@@ -107,7 +107,7 @@ async def delete_messages(event, chat, from_message):
 
 
 
-@jmthon.ar_cmd(pattern="اسم الاغنية$"
+@jmthon.ar_cmd(pattern="اسم الاغنية$")
 async def shazamcmd(event):
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
