@@ -157,13 +157,6 @@ async def users(event):
     await tgbot.send_message(event.chat_id, rorza)
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"jm_hhack")))
-async def users(event):
-    await event.delete()
-    rorza = "الان ارسل  /rz"
-    await tgbot.send_message(event.chat_id, rorza)
-
-
 @jmthon.bot_cmd(incoming=True, func=lambda e: e.is_private)
 async def bot_pms(event):  # sourcery no-metrics
     chat = await event.get_chat()
