@@ -15,6 +15,18 @@ chr = Config.COMMAND_HAND_LER
 
 PICS_STR = []
 
+from userbot import jmthon
+from ..Config import Config
+
+
+@jmthon.ar_cmd(pattern="بوتي$")
+async def _(event):
+    TG_BOT_USERNAME = Config.TG_BOT_USERNAME
+    await event.reply(f"**❃ البوت الخاص بك هو** \n {TG_BOT_USERNAME}")
+
+
+# حتى هذا تخمطه  😂؟
+
 
 @jmthon.ar_cmd(pattern="اتمنى ?(.*)")
 async def roz(jasem):
