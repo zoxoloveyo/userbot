@@ -29,7 +29,7 @@ LOGS = logging.getLogger("jmthon")
 bot = jmthon
 
 StartTime = time.time()
-jmthonversion = "4.0.0"
+jmthonversion = "4.0.1"
 
 
 def close_connection(*_):
