@@ -4,6 +4,7 @@ from userbot import jmthon
 
 from ..core.managers import edit_or_reply
 
+
 @jmthon.ar_cmd(pattern="فصخ ([\s\S]*)")
 async def typewriter(typew):
     message = typew.pattern_match.group(1)
@@ -28,4 +29,3 @@ async def _(event):
     count = int(cat[0])
     repsmessage = (f"{message}") * count
     await edit_or_reply(event, repsmessage)
-
