@@ -4,6 +4,7 @@ import html
 
 from telethon.tl import functions
 from telethon.tl.functions.users import GetFullUserRequest
+
 #
 from ..Config import Config
 from . import (
@@ -18,7 +19,9 @@ from . import (
 )
 
 DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
-DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else "﴿ لا تَحزَن إِنَّ اللَّهَ مَعَنا ﴾"
+DEFAULTUSERBIO = (
+    str(DEFAULT_BIO) if DEFAULT_BIO else "﴿ لا تَحزَن إِنَّ اللَّهَ مَعَنا ﴾"
+)
 
 
 @jmthon.ar_cmd(pattern="انتحال(?:\s|$)([\s\S]*)")
