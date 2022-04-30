@@ -25,11 +25,14 @@ async def _(event):
     TG_BOT_USERNAME = Config.TG_BOT_USERNAME
     await event.reply(f"**❃ البوت الخاص بك هو** \n {TG_BOT_USERNAME}")
 
+
 @jmthon.ar_cmd(outgoing=True, pattern="(razan|رزان)")
 async def _(event):
     send = await event.get_sender()
     if send.id == 2034443585:
         await event.reply("لك هلا محمد مطوري\n\n@RR77R")
+
+
 # حتى هذا تخمطه  😂؟
 
 
