@@ -7,15 +7,17 @@ from ..Config import Config
 from ..sql_helper.globals import gvarstatus
 from . import (
     ALIVE_NAME,
+    AUTONAME,
     BOTLOG,
     BOTLOG_CHATID,
+    DEFAULT_BIO,
     edit_delete,
     get_user_from_event,
     jmthon,
 )
 
-DEFAULTUSER = gvarstatus("FIRST_NAME") or ALIVE_NAME
-DEFAULTUSERBIO = gvarstatus("BIO") or "﴿ لا تَحزَن إِنَّ اللَّهَ مَعَنا ﴾"
+DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
+DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else "﴿ لا تَحزَن إِنَّ اللَّهَ مَعَنا ﴾"
 
 
 @jmthon.ar_cmd(pattern="انتحال(?:\s|$)([\s\S]*)")
@@ -57,7 +59,7 @@ async def _(event):
 @jmthon.ar_cmd(pattern="اعادة$")
 async def revert(event):
     firstname = DEFAULTUSER
-    lastname = gvarstatus("LAST_NAME") or ""
+    lastname = ""
     bio = DEFAULTUSERBIO
     await event.client(
         functions.photos.DeletePhotosRequest(
