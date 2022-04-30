@@ -19,6 +19,7 @@ from .utils import (
     load_ins,
     load_plugins,
     mybot,
+    tmnot,
     saves,
     setup_bot,
     startupmessage,
@@ -77,7 +78,7 @@ async def startup_process():
 
 
 jmthon.loop.run_until_complete(startup_process())
-
+jmthon.loop.create_task(tmnot())
 if len(sys.argv) not in (1, 3, 4):
     jmthon.disconnect()
 else:
