@@ -3,18 +3,10 @@ import html
 from telethon.tl import functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
-from userbot.Config import Config
-from . import (
-    ALIVE_NAME,
-    AUTONAME,
-    BOTLOG,
-    BOTLOG_CHATID,
-    DEFAULT_BIO,
-    edit_delete,
-    get_user_from_event,
-    jmthon,
-)
 
+from userbot.Config import Config
+
+from . import ALIVE_NAME, AUTONAME, BOTLOG, BOTLOG_CHATID, DEFAULT_BIO, jmthon
 
 DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
 DEFAULTUSERBIO = (
@@ -58,9 +50,7 @@ async def _(event):
     await jmthon(functions.account.UpdateProfileRequest(last_name=last_name))
     await jmthon(functions.account.UpdateProfileRequest(about=user_bio))
     pfile = await jmthon.upload_file(profile_pic)
-    await jmthon(
-        functions.photos.UploadProfilePhotoRequest(pfile)
-    )
+    await jmthon(functions.photos.UploadProfilePhotoRequest(pfile))
     await event.delete()
     await jmthon.send_message(
         event.chat_id, "**⌔∮ تم بنجاح انتحال هذا المستخدم**", reply_to=reply_message
