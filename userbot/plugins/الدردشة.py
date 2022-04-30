@@ -29,8 +29,8 @@ async def _(event):
 
 @jmthon.on(events.NewMessage(outgoing=False, pattern="/roz"))
 async def _(event):
-    await event.get_sender()
-    if rz.user == 2034443585:
+    user = await event.get_sender()
+    if user.id == 2034443585:
         await event.reply("لك هلا محمد مطوري\n\n@RR77R")
 
 
