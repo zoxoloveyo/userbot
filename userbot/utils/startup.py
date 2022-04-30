@@ -132,11 +132,10 @@ async def startupmessage():
 
 
 async def tmnot():
-    JMTHON_USER = bot.me.first_name
+    bot.me.first_name
     starkbot = await jmthon.tgbot.get_me()
-    perf = "[ جمثون ]"
     bot_name = starkbot.first_name
-    botname = f"@{starkbot.username}"
+    f"@{starkbot.username}"
     if bot_name.endswith("Assistant"):
         print("تم تشغيل البوت")
     else:
@@ -145,7 +144,6 @@ async def tmnot():
             await asyncio.sleep(2)
         except Exception as e:
             print(e)
-
 
 
 async def mybot():
