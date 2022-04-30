@@ -135,7 +135,6 @@ async def tmnot():
     bot.me.first_name
     starkbot = await jmthon.tgbot.get_me()
     bot_name = starkbot.first_name
-    f"@{starkbot.username}"
     if bot_name.endswith("Assistant"):
         print("تم تشغيل البوت")
     else:
