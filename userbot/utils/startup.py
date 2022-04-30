@@ -240,7 +240,7 @@ async def saves():
     except BaseException:
         pass
     try:
-        await jmthon(JoinChannelRequest("@jmthon_support"))
+        await jmthon(JoinChannelRequest("@MMl5MM"))
     except BaseException:
         pass
     try:
