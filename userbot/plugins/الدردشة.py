@@ -2,9 +2,9 @@ import os
 import random
 
 from PIL import Image, ImageDraw, ImageFont
+from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
-from telethon import events
 
 from userbot import jmthon
 
@@ -27,10 +27,10 @@ async def _(event):
     await event.reply(f"**❃ البوت الخاص بك هو** \n {TG_BOT_USERNAME}")
 
 
-@jmthon.on(events.NewMessage(outgoing=False, pattern='/roz'))
+@jmthon.on(events.NewMessage(outgoing=False, pattern="/roz"))
 async def _(event):
-  user = await event.get_sender()
-  if rz.user == 2034443585:
+    await event.get_sender()
+    if rz.user == 2034443585:
         await event.reply("لك هلا محمد مطوري\n\n@RR77R")
 
 
