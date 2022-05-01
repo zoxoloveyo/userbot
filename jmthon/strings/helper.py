@@ -1,22 +1,8 @@
 import os
-import asyncio
-import glob
-import math
-import os
 import re
-import sys
-import cv2
-import time 
-import aiohttp 
-import subprocess 
-from userbot import jmthon
-from PIL import Image, ImageDraw, ImageFont
-from telethon import Button
-from telethon.helpers import _maybe_await 
-from telethon.utils import get_display_name
-from telethon.tl import types 
-from traceback import format_exc
+
 import requests
+from telethon import Button
 
 try:
     from pyquery import PyQuery as pq
