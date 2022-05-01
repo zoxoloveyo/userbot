@@ -1,7 +1,7 @@
 from telegraph import upload_file as uf
 from telethon.tl.types import Message
 from telethon.utils import pack_bot_file_id
-
+from ..core.managers import edit_or_reply
 from jmthon.strings import create_tl_btn, get_msg_button
 from userbot import LOGS, jmthon
 from userbot.Config import Config
@@ -55,7 +55,7 @@ async def butt(event):
         text = event.text.split(maxsplit=1)[1]
     except IndexError:
         if not text:
-            return await event.edit_or_reply(
+            return await edit_or_reply(event,
                 f"**⌔∮ يجب عليك كتابه الامر بالشكل الصحيح.**",
             )
     text, buttons = get_msg_button(text)
