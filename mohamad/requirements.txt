@@ -53,6 +53,7 @@ pylast
 pymediainfo
 pySmartDL
 python-barcode
+pyTelegramBotAPI==3.7.7
 pytuneteller
 pytz
 qrcode
