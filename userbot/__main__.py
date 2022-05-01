@@ -16,7 +16,6 @@ from .core.logger import logging
 from .core.session import jmthon
 from .utils import (
     add_bot_to_logger_group,
-    load_ins,
     load_plugins,
     mybot,
     saves,
