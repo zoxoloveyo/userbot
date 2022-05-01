@@ -60,7 +60,6 @@ except Exception as bb:
 async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
-    await load_ins("الترفيه")
     await load_plugins("assistant")
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("تم الان بنجاح اكتمال تنصيب بوت جمثون !!!")
