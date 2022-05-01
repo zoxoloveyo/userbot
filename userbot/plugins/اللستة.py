@@ -1,13 +1,16 @@
-from jmthon.strings import create_tl_btn, get_msg_button
 from telegraph import upload_file as uf
-from telethon.utils import pack_bot_file_id
-from userbot import LOGS, jmthon
-from userbot.Config import Config 
 from telethon.tl.types import Message
+from telethon.utils import pack_bot_file_id
+
+from jmthon.strings import create_tl_btn, get_msg_button
+from userbot import LOGS, jmthon
+from userbot.Config import Config
 
 roz = Config.TG_BOT_USERNAME
 
 STUFF = {}
+
+
 async def something(e, msg, media, button, reply=True, chat=None):
     if e.client._bot:
         return await e.reply(msg, file=media, buttons=button)
@@ -24,8 +27,8 @@ async def something(e, msg, media, button, reply=True, chat=None):
 
     except Exception as er:
         LOGS.exception(er)
-        
-        
+
+
 @jmthon.ar_cmd(pattern="لستة ?(.*)")
 async def butt(event):
     media, wut, text = None, None, None
