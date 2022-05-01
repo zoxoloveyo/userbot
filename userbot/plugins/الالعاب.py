@@ -21,8 +21,8 @@ IF_EMOJI = re.compile(
 
 def deEmojify(inputString: str) -> str:
     return re.sub(IF_EMOJI, "", inputString)
-    
-    
+
+
 @jmthon.ar_cmd(pattern="شطرنج(?: |$)(.*)")
 async def nope(event):
     ok = event.pattern_match.group(1)
@@ -39,7 +39,8 @@ async def nope(event):
         hide_via=True,
     )
     await event.delete()
-    
+
+
 @jmthon.ar_cmd(pattern="اكس او(?: |$)(.*)")
 async def nope(event):
     ok = event.pattern_match.group(1)
