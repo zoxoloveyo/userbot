@@ -1,12 +1,11 @@
 from asyncio import sleep
 
 from geopy.geocoders import Nominatim
-from telethon import Button
 from telethon.tl import types
 
 from ..core.managers import edit_or_reply
 from ..helpers import reply_id
-from . import edit_delete, jmthon, reply_id
+from . import jmthon, reply_id
 
 
 @jmthon.ar_cmd(pattern="موقع ([\s\S]*)")
