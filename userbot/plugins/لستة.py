@@ -9,30 +9,6 @@ from ..helpers import reply_id
 from . import edit_delete, jmthon, reply_id
 
 
-@jmthon.ar_cmd(pattern="لستة(?: |$)(.*)")
-async def _(event):
-    reply_to_id = await reply_id(event)
-    reply_message = await event.get_reply_message()
-    if reply_message:
-        markdown_note = reply_message.text
-    else:
-        markdown_note = "".join(event.text.split(maxsplit=1)[1:])
-    if not markdown_note:
-        return await edit_delete(event, "₰ يجب عليك وضع مسافـة لاستخدامها مع الامر ")
-    await make_inline(markdown_note, event.client, event.chat_id, reply_to_id)
-    await event.delete()
-
-
-def build_keyboard(buttons):
-    keyb = []
-    for btn in buttons:
-        if btn[2] and keyb:
-            keyb[-1].append(Button.url(btn[0], btn[1]))
-        else:
-            keyb.append([Button.url(btn[0], btn[1])])
-    return keyb
-
-
 @jmthon.ar_cmd(pattern="موقع ([\s\S]*)")
 async def gps(event):
     reply_to_id = await reply_id(event)
