@@ -21,7 +21,6 @@ from .utils import (
     saves,
     setup_bot,
     startupmessage,
-    tmnot,
     verifyLoggerGroup,
 )
 
