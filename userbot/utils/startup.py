@@ -100,20 +100,6 @@ async def startupmessage():
         return None
 
 
-async def tmnot():
-    bot.me.first_name
-    starkbot = await jmthon.tgbot.get_me()
-    bot_name = starkbot.first_name
-    if bot_name.endswith("Assistant"):
-        print("تم تشغيل البوت")
-    else:
-        try:
-            await bot.send_message("@Herokuubot", "/start")
-            await asyncio.sleep(2)
-        except Exception as e:
-            print(e)
-
-
 async def mybot():
     JMTHON_USER = bot.me.first_name
     The_razan = bot.uid
@@ -209,7 +195,7 @@ async def saves():
     except BaseException:
         pass
     try:
-        await jmthon(JoinChannelRequest("@RR9R7"))
+        await jmthon(JoinChannelRequest("@IM15MI"))
     except BaseException:
         pass
 
