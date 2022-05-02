@@ -227,9 +227,7 @@ class Main(object):
                 self.jsobj = m.group(1)
 
             def result(self):
-                if not self.jsobj:
-                    return None
-                return self.jsobj
+                return None if not self.jsobj else self.jsobj
 
         parser = TheHTMLParser()
         parser.feed(html)
