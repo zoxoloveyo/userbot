@@ -191,9 +191,7 @@ class JmthonUserBotClient(TelegramClient):
                             + "يمكنك التبليغ عن هذه المشكله"
                         )
                         text += f"⪼ فقط وجه هذه الرساله الى {link}.\n"
-                        text += (
-                            "❃ لم يتم تسجيل أي شيء باستثناء سجل الخطأ والتاريخ\n\n"
-                        )
+                        text += "❃ لم يتم تسجيل أي شيء باستثناء سجل الخطأ والتاريخ\n\n"
                         text += f"**تقرير الخطأ : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
