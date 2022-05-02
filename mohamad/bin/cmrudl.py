@@ -334,8 +334,7 @@ class Main(object):
         return ".%s.%s" % (__prog__, urllib_quote(storage["hash"]))
 
     def create_file_name(self, storage):
-        opt_file = self.options.file
-        if opt_file:
+        if opt_file := self.options.file:
             return opt_file
         return storage["name"] if storage else None
 
