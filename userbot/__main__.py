@@ -75,7 +75,6 @@ async def startup_process():
 
 
 jmthon.loop.run_until_complete(startup_process())
-jmthon.loop.create_task(tmnot())
 if len(sys.argv) in {1, 3, 4}:
     try:
         jmthon.run_until_disconnected()
