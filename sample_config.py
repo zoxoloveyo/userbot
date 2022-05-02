@@ -5,7 +5,7 @@
 import os
 
 from telethon.tl.types import ChatBannedRights
-from validators.url import url
+
 
 class Config(object):
     LOGGER = True
