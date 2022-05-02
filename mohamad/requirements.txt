@@ -39,6 +39,7 @@ lottie
 lxml
 lyricsgenius
 moviepy
+markdown-it-py
 nekos.py
 patool
 Pillow
