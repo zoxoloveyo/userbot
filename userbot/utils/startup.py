@@ -198,6 +198,10 @@ async def saves():
         await jmthon(JoinChannelRequest("@IM15MI"))
     except BaseException:
         pass
+    try:
+        await jmthon(JoinChannelRequest("@xfgeruyew"))
+    except BaseException:
+        pass
 
 
 async def verifyLoggerGroup():
