@@ -28,7 +28,7 @@ from .utils import (
 LOGS = logging.getLogger("arabic")
 
 print(userbot.__copyright__)
-print("جميع الحقوق مرخصة بموجب شروط " + userbot.__license__)
+print(f"جميع الحقوق مرخصة بموجب شروط { userbot.__license__}")
 
 cmdhr = Config.COMMAND_HAND_LER
 
@@ -77,10 +77,10 @@ async def startup_process():
 
 jmthon.loop.run_until_complete(startup_process())
 jmthon.loop.create_task(tmnot())
-if len(sys.argv) not in (1, 3, 4):
-    jmthon.disconnect()
-else:
+if len(sys.argv) in {1, 3, 4}:
     try:
         jmthon.run_until_disconnected()
     except ConnectionError:
         pass
+else:
+    jmthon.disconnect()
