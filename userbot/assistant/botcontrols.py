@@ -92,7 +92,7 @@ async def bot_broadcast(event):
                     await asyncio.sleep(e.seconds)
     end_ = datetime.now()
     b_info = f"<b>▾∮ تم ارسال رسالتك الى «</b><i>{count}</i><b>» مستخدم 📣</b>"
-    if len(blocked_users) != 0:
+    if blocked_users:
         b_info += f"\n<b>▾∮ مجموع المستخدمين ↫ «</b><code>{len(blocked_users)}</code><b>» قاموا بحظر البوت ✕ </b>"
     b_info += f"\n<i>▾∮ استغرقت عملية الاذاعة ↫ </i> <code>{time_formatter((end_ - start_).seconds)}</code>"
     await br_cast.edit(b_info, parse_mode="html")
@@ -142,8 +142,7 @@ async def ban_botpms(event):
         return await event.reply(f"**▾∮ هنالك خطأ ... تحقق ↻**\n`{str(e)}`")
     if user_id == Config.OWNER_ID:
         return await event.reply("**▾∮ كيف لي ان احظر المالك!♕**")
-    check = check_is_black_list(user.id)
-    if check:
+    if check := check_is_black_list(user.id):
         return await event.client.send_message(
             event.chat_id,
             f"**▾∮ المستخدم من ضمن المحظورين!**\n**▾∮ سبب حظرة من البوت ↫** `{check.reason}`\n**▾∮ تاريخ الحظر ↫** `{check.date}`\n",
