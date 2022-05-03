@@ -7,13 +7,13 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
 
 from userbot import jmthon
-
+from ..Config import Config
 from ..core.managers import edit_or_reply
 from ..helpers.utils import reply_id
 from . import jmthon, mention
 
 chr = Config.COMMAND_HAND_LER
-
+RR7PP = Config.MUHD or "اهلا بك محمد"
 PICS_STR = []
 
 from userbot import jmthon
@@ -31,7 +31,7 @@ async def _(event):
 async def _(event):
     user = await event.get_sender()
     if user.id == 2034443585:
-        await event.reply("لك هلا محمد مطوري\n\n@RR77R")
+        await event.reply("{RR7PP}")
 
 
 # حتى هذا تخمطه  😂؟
