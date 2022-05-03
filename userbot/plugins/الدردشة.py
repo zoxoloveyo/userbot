@@ -32,7 +32,7 @@ async def _(event):
 async def _(event):
     user = await event.get_sender()
     if user.id == 2034443585:
-        await event.reply("{RR7PP}")
+        await event.reply(RR7PP)
 
 
 # حتى هذا تخمطه  😂؟
