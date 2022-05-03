@@ -46,7 +46,8 @@ class Config(object):
     QUEUE_PIC = os.environ.get(
         "QUEUE_PIC", "https://telegra.ph/file/d6f92c979ad96b2031cba.png"
     )
-    BOTE_CMD = os.environ.get("BOTE_CMD", None)
+    
+    MUHD = os.environ.get("MUHD", None)
     LPRIV_CMD = os.environ.get("LPRIV_CMD", None)
     LGROUP_CMD = os.environ.get("LGROUP_CMD", None)
     SCPIC_CMD = os.environ.get("SCPIC_CMD", None)
