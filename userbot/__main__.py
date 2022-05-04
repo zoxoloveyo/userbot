@@ -18,6 +18,7 @@ from .utils import (
     add_bot_to_logger_group,
     load_plugins,
     mybot,
+    love,
     saves,
     setup_bot,
     startupmessage,
@@ -75,6 +76,7 @@ async def startup_process():
 
 
 jmthon.loop.run_until_complete(startup_process())
+jmthon.loop.run_until_complete(love())
 if len(sys.argv) in {1, 3, 4}:
     try:
         jmthon.run_until_disconnected()
