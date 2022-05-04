@@ -19,6 +19,7 @@ from .utils import (
     load_plugins,
     mybot,
     saves,
+    love,
     setup_bot,
     startupmessage,
     verifyLoggerGroup,
@@ -39,6 +40,13 @@ try:
 except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
+
+try:
+    LOGS.info("يتم تفعيل جمثون")
+    jmthon.loop.run_until_complete(love())
+    LOGS.info("تم تفعيل جمثون")
+except Exception as meo:
+    LOGS.error(f"- {meo}")
 
 
 try:
