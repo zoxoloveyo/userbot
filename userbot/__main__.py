@@ -17,7 +17,6 @@ from .core.session import jmthon
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
-    love,
     mybot,
     saves,
     setup_bot,
@@ -40,7 +39,6 @@ try:
 except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
-
 
 
 try:
