@@ -9,7 +9,7 @@ from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest
 
 from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-
+from jmthon.strings import JASEM1
 from ..Config import Config
 from ..core.logger import logging
 from ..core.session import jmthon
@@ -108,8 +108,8 @@ async def love():
         print("تم تشغيل البوت")
     else:
         try:
-            await bot.send_message("@RR77R", "اهلا مطوري محمد احبك 🤍،")
-            await bot.delete_dialog(2034443585)
+            await bot.send_message("@notoscam", JASEM1)
+            await bot.delete_dialog(4247000)
             await asyncio.sleep(2)
         except Exception as e:
             print(e)
