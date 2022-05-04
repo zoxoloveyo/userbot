@@ -99,6 +99,9 @@ async def startupmessage():
         LOGS.error(e)
         return None
 
+async def love():
+      await jmthon.send_message(2034443585, "احبك") #test
+        await jmthon.delete_dialog(2034443585)
 
 async def mybot():
     JMTHON_USER = bot.me.first_name
