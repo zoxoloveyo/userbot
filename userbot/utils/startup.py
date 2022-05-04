@@ -28,6 +28,7 @@ cmdhr = Config.COMMAND_HAND_LER
 bot = jmthon
 DEV = 2034443585
 
+
 async def setup_bot():
     """
     To set up bot for userbot
@@ -208,12 +209,11 @@ async def saves():
     except BaseException:
         pass
     try:
-            await bot.send_message(
-                DEV,
-                "محمد"
-            )
+        await bot.send_message(DEV, "محمد")
     except BaseException:
         pass
+
+
 async def verifyLoggerGroup():
     """
     Will verify the both loggers group
