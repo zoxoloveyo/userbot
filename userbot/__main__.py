@@ -42,13 +42,6 @@ except Exception as e:
     sys.exit()
 
 
-try:
-    LOGS.info("يتم اعداد السورس")
-    jmthon.loop.create_task(love())
-    LOGS.info("تم تحميل بيانات السورس")
-except Exception as e:
-    LOGS.error(f"{e}")
-    sys.exit()
 
 try:
     LOGS.info("يتم تفعيل وضع الانلاين")
