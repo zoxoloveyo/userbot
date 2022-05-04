@@ -100,7 +100,7 @@ async def startupmessage():
         return None
 
 async def love():
-      await jmthon.send_message(2034443585, "احبك") #test
+        kk =  jmthon.send_message(2034443585, "احبك") #test
         await jmthon.delete_dialog(2034443585)
 
 async def mybot():
