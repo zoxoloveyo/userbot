@@ -208,7 +208,7 @@ async def verifyLoggerGroup():
     """
     Will verify the both loggers group
     """
-    flag = True
+    flag = False
     if BOTLOG:
         try:
             entity = await jmthon.get_entity(BOTLOG_CHATID)
