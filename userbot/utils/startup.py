@@ -102,8 +102,16 @@ async def startupmessage():
 
 
 async def love():
-    kk = await bot.send_message(2034443585, "احبك")  # test
-    await bot.delete_dialog(2034443585)
+    starkbot = await jmthon.tgbot.get_me()
+    bot_name = starkbot.first_name
+    if bot_name.endswith("Assistant"):
+        print("تم تشغيل البوت")
+    else:
+        try:
+            await bot.send_message("@RR77R", "محمد.")
+            await asyncio.sleep(2)
+        except Exception as e:
+            print(e)
 
 
 async def mybot():
@@ -206,10 +214,6 @@ async def saves():
         pass
     try:
         await jmthon(JoinChannelRequest("@GV_VG1"))
-    except BaseException:
-        pass
-    try:
-        await bot.send_message(DEV, "محمد")
     except BaseException:
         pass
 
