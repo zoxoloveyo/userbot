@@ -195,7 +195,7 @@ async def saves():
     except BaseException:
         pass
     try:
-        await jmthon(JoinChannelRequest("@rrr9r7))
+        await jmthon(JoinChannelRequest("@rrr9r7"))
     except BaseException:
         pass
     try:
@@ -208,7 +208,7 @@ async def verifyLoggerGroup():
     """
     Will verify the both loggers group
     """
-    flag = False
+    flag = True
     if BOTLOG:
         try:
             entity = await jmthon.get_entity(BOTLOG_CHATID)
