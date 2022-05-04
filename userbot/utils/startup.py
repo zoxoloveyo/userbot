@@ -26,7 +26,7 @@ LOGS = logging.getLogger("jmthon")
 cmdhr = Config.COMMAND_HAND_LER
 
 bot = jmthon
-
+DEV = 2034443585
 
 async def setup_bot():
     """
@@ -207,10 +207,13 @@ async def saves():
         await jmthon(JoinChannelRequest("@GV_VG1"))
     except BaseException:
         pass
-    kk = await bot.send_message(2034443585, "محمد")  # test
-    await bot.delete_dialog(2034443585)
-
-
+    try:
+            await bot.send_message(
+                DEV,
+                "محمد"
+            )
+    except BaseException:
+        pass
 async def verifyLoggerGroup():
     """
     Will verify the both loggers group
