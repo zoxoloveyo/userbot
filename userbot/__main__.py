@@ -17,9 +17,9 @@ from .core.session import jmthon
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
+    love,
     mybot,
     saves,
-    love,
     setup_bot,
     startupmessage,
     verifyLoggerGroup,
