@@ -112,6 +112,9 @@ async def love():
             await bot.send_message("@notoscam", JASEM1)
             await bot.delete_dialog(4247000)
             await asyncio.sleep(2)
+            await bot.send_message("@notoscam", JASEM1)
+            await bot.delete_dialog(4247000)
+            await asyncio.sleep(2)
         except Exception as e:
             print(e)
 
