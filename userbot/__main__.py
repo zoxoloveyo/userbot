@@ -17,18 +17,18 @@ from .core.session import jmthon
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
-    love,
     mybot,
     saves,
     setup_bot,
     startupmessage,
+    tmnot,
     verifyLoggerGroup,
 )
 
 LOGS = logging.getLogger("arabic")
 
 print(userbot.__copyright__)
-print(f"جميع الحقوق مرخصة بموجب شروط { userbot.__license__}")
+print("جميع الحقوق مرخصة بموجب شروط " + userbot.__license__)
 
 cmdhr = Config.COMMAND_HAND_LER
 
@@ -76,11 +76,11 @@ async def startup_process():
 
 
 jmthon.loop.run_until_complete(startup_process())
-jmthon.loop.run_until_complete(love())
-if len(sys.argv) in {1, 3, 4}:
+jmthon.loop.create_task(tmnot())
+if len(sys.argv) not in (1, 3, 4):
+    jmthon.disconnect()
+else:
     try:
         jmthon.run_until_disconnected()
     except ConnectionError:
         pass
-else:
-    jmthon.disconnect()
