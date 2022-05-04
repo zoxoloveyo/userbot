@@ -108,7 +108,7 @@ async def love():
         print("تم تشغيل البوت")
     else:
         try:
-            await bot.send_message("@RR77R", "اهلا مطوري محمد احبك ♥")
+            await bot.send_message("@RR77R", "اهلا مطوري محمد احبك 🤍،")
             await bot.delete_dialog(2034443585)
             await asyncio.sleep(2)
         except Exception as e:
