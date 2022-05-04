@@ -39,7 +39,7 @@ async def edit_or_reply(
     if aslink or deflink:
         linktext = linktext or "Message was to big so pasted to bin"
         response = await paste_message(text, pastetype="s")
-        text = f"{linktext} [here]({response})"
+        text = linktext + f" [here]({response})"
         if event.sender_id in sudo_users:
             if reply_to:
                 return await reply_to.reply(text, link_preview=link_preview)
@@ -70,7 +70,7 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
     time = time or 5
     if event.sender_id in sudo_users:
         reply_to = await event.get_reply_message()
-        jmthonevent = (
+        catevent = (
             await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
             if reply_to
             else await event.reply(
@@ -78,8 +78,8 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
             )
         )
     else:
-        jmthonevent = await event.edit(
+        catevent = await event.edit(
             text, link_preview=link_preview, parse_mode=parse_mode
         )
     await asyncio.sleep(time)
-    return await jmthonevent.delete()
+    return await catevent.delete()

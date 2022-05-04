@@ -113,8 +113,8 @@ class JmthonUserBotClient(TelegramClient):
                     )
                 try:
                     await func(check)
-                except events.StopPropagation as e:
-                    raise events.StopPropagation from e
+                except events.StopPropagation:
+                    raise events.StopPropagation
                 except KeyboardInterrupt:
                     pass
                 except MessageNotModifiedError:
@@ -177,21 +177,19 @@ class JmthonUserBotClient(TelegramClient):
                             "date": datetime.datetime.now(),
                         }
                         ftext += "\n\n--------تسجيل وحفظ الخطأ --------"
-                        ftext += "\n\n\nاخر 5 تعديلات:\n"
                         command = 'git log --pretty=format:"%an: %s" -5'
+                        ftext += "\n\n\nاخر 5 تعديلات:\n"
                         output = (await runcmd(command))[:2]
                         result = output[0] + output[1]
                         ftext += result
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
+                        text = "**⪼ تقرير خطأ جمثون 𓆰،**\n\n"
                         link = "[هنا](https://t.me/jmthon_support)"
-                        text = (
-                            "**⪼ تقرير خطأ جمثون 𓆰،**\n\n"
-                            + "يمكنك التبليغ عن هذه المشكله"
-                        )
-                        text += f"⪼ فقط وجه هذه الرساله الى {link}.\n"
-                        text += "❃ لم يتم تسجيل أي شيء باستثناء سجل الخطأ والتاريخ\n\n"
+                        text += "يمكنك التبليغ عن هذه المشكله"
+                        text += f"- فقط قم بتوجيه الرساله هنا {link}.\n"
+                        text += "لم يتم حفظ اي شي عدا المشكله وتاريخ حدوثها\n\n"
                         text += f"**تقرير الخطأ : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
@@ -255,18 +253,16 @@ class JmthonUserBotClient(TelegramClient):
         self: TelegramClient,
         disable_errors: bool = False,
         edited: bool = False,
-        forward=False,
         **kwargs,
     ) -> callable:  # sourcery no-metrics
         kwargs["func"] = kwargs.get("func", lambda e: e.via_bot_id is None)
-        kwargs.setdefault("forwards", forward)
 
         def decorator(func):
             async def wrapper(check):
                 try:
                     await func(check)
-                except events.StopPropagation as e:
-                    raise events.StopPropagation from e
+                except events.StopPropagation:
+                    raise events.StopPropagation
                 except KeyboardInterrupt:
                     pass
                 except MessageNotModifiedError:

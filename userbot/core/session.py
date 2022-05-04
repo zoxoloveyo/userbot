@@ -5,8 +5,14 @@
 # This file is a part of < https://github.com/JMTHON-AR/JMTHON >
 # Please read the GNU Affero General Public License in;
 # < https://github.com/JMTHON-AR/JM-THON/blob/master/LICENSE
-# ==============================================================
+# ===============================================================
+import os
 import sys
+
+try:
+    pass
+except ModuleNotFoundError:
+    os.system("pip3 install py-tgcalls")
 
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from telethon.sessions import StringSession
@@ -38,6 +44,18 @@ except Exception as e:
     print(f"[STRING SESSION] - {str(e)}")
     sys.exit()
 
+if Config.STRING_2:
+    session2 = StringSession(str(STRING_2))
+    JMTHON2 = JmthonUserBotClient(
+        session=session2,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+else:
+    JMTHON2 = None
 
 jmthon.tgbot = tgbot = JmthonUserBotClient(
     session="JmthonTgbot",
