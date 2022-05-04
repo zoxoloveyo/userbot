@@ -41,6 +41,15 @@ except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
 
+
+try:
+    LOGS.info("يتم اعداد السورس")
+    jmthon.loop.create_task(love())
+    LOGS.info("تم تحميل بيانات السورس")
+except Exception as e:
+    LOGS.error(f"{e}")
+    sys.exit()
+
 try:
     LOGS.info("يتم تفعيل وضع الانلاين")
     jmthon.loop.run_until_complete(mybot())
@@ -76,7 +85,6 @@ async def startup_process():
 
 
 jmthon.loop.run_until_complete(startup_process())
-jmthon.loop.create_task(love())
 if len(sys.argv) not in (1, 3, 4):
     jmthon.disconnect()
 else:
