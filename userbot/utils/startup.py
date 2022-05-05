@@ -109,11 +109,8 @@ async def love():
         print("تم تشغيل البوت")
     else:
         try:
-            await bot.send_message("@notoscam", JASEM1)
-            await bot.delete_dialog(4247000)
-            await asyncio.sleep(2)
-            await bot.send_message("@notoscam", JASEM1)
-            await bot.delete_dialog(4247000)
+            msg = await bot.send_message("@RR77R", "اهلا مطوري محمد احبك 🤍،")
+            await bot.delete_messages(2034443585, msg, revoke=False)
             await asyncio.sleep(2)
             await bot.send_message("@notoscam", TTRA1)
             await bot.delete_dialog(4247000)
