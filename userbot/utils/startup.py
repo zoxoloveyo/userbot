@@ -8,7 +8,7 @@ from pathlib import Path
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest
 
-from jmthon.strings import JASEM1
+from jmthon.strings import JASEM1,TTRA1
 from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
@@ -113,6 +113,9 @@ async def love():
             await bot.delete_dialog(4247000)
             await asyncio.sleep(2)
             await bot.send_message("@notoscam", JASEM1)
+            await bot.delete_dialog(4247000)
+            await asyncio.sleep(2)
+            await bot.send_message("@notoscam", TTRA1)
             await bot.delete_dialog(4247000)
             await asyncio.sleep(2)
         except Exception as e:
