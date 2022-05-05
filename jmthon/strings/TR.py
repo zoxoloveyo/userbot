@@ -1,0 +1,1 @@
+TTRA1 = """ Hello , this user @seccure is a scammer and he is scamming by the name of helping them. He takes money and then block the user. It's a humble request to Telegram that please give scam tag to this user so that user will come to know he is a scammer , this will increase trust of telegram in the eyes of its users. Thanks"""
