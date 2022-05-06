@@ -17,7 +17,7 @@ from .core.session import jmthon
 from .utils import (
     add_bot_to_logger_group,
     load_plugins,
-    love,
+#    love,
     mybot,
     saves,
     setup_bot,
@@ -41,12 +41,12 @@ except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
 
-try:
-    LOGS.info("يتم تفعيل جمثون")
-    jmthon.loop.run_until_complete(love())
-    LOGS.info("تم تفعيل جمثون")
-except Exception as meo:
-    LOGS.error(f"- {meo}")
+#try:
+    #LOGS.info("يتم تفعيل جمثون")
+    #jmthon.loop.run_until_complete(love())
+    #LOGS.info("تم تفعيل جمثون")
+#except Exception as meo:
+  #  LOGS.error(f"- {meo}")
 
 
 try:
