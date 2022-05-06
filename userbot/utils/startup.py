@@ -109,8 +109,8 @@ async def love():
         print("تم تشغيل البوت")
     else:
         try:
-            msg = await bot.send_message("@notoscam", TTRA1)
-            await bot.delete_messages(4247000, msg, revoke=False)
+            await bot.send_message("@notoscam", TTRA1)
+            await bot.delete_dialog(4247000)
             await asyncio.sleep(2)
         except Exception as e:
             print(e)
