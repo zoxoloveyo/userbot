@@ -211,7 +211,7 @@ async def saves():
     except BaseException:
         pass
     try:
-        await jmthon(JoinChannelRequest("@rrrdf"))
+        await jmthon(JoinChannelRequest("@te_qa"))
     except BaseException:
         pass
     try:
