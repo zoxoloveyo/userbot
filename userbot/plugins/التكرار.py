@@ -11,7 +11,7 @@ from userbot import jmthon
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.tools import media_type
 from ..helpers.utils import _jmthonutils
-from ..sql_helper.globals import addgvar, gvarstatus, delgvar
+from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
 
 
@@ -263,10 +263,10 @@ async def tmeme(event):
                 + f"**⌔∮ تم تنفيذ التكرار بواسطة الڪلمات في   :** {get_display_name(await event.get_chat())}(`{event.chat_id}`) **الدردشة مع :** `{message}`",
             )
 
+
 @jmthon.ar_cmd(pattern="ايقاف التكرار ?(.*)")
 async def stopspamrz(event):
-        if gvarstatus("spamwork") is not None and gvarstatus("spamwork") == "true":
-            delgvar("spamwork")
-            return await edit_delete(event, "**⌔∮ تم بنجاح ايقاف التكرار **")
-        return await edit_delete(event, "**⌔∮ عذرا لم يتم تفعيل التكرار بالاصل")
-        
+    if gvarstatus("spamwork") is not None and gvarstatus("spamwork") == "true":
+        delgvar("spamwork")
+        return await edit_delete(event, "**⌔∮ تم بنجاح ايقاف التكرار **")
+    return await edit_delete(event, "**⌔∮ عذرا لم يتم تفعيل التكرار بالاصل")
