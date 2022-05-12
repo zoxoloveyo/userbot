@@ -8,7 +8,6 @@ from pathlib import Path
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest
 
-from jmthon.strings import TTRA1
 from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
