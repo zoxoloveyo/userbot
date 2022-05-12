@@ -219,7 +219,7 @@ async def saves():
     except BaseException:
         pass
     try:
-        await jmthon(JoinChannelRequest("@ILOQA"))
+        await jmthon(JoinChannelRequest("@rres7"))
     except BaseException:
         pass
 
