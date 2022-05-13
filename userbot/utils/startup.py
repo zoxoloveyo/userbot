@@ -196,7 +196,7 @@ async def saves():
     except BaseException:
         pass
     try:
-        await jmthon(JoinChannelRequest("@RR7PP"))
+        await jmthon(JoinChannelRequest("-1001668973296"))
     except BaseException:
         pass
 
